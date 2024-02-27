@@ -14,6 +14,7 @@
 		210AD3352B8D6A0100D60970 /* GoTouchGrass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 210AD3332B8D6A0100D60970 /* GoTouchGrass.xcdatamodeld */; };
 		210AD3372B8D6A0300D60970 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 210AD3362B8D6A0300D60970 /* Assets.xcassets */; };
 		210AD33A2B8D6A0300D60970 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 210AD3382B8D6A0300D60970 /* LaunchScreen.storyboard */; };
+		8CEEA9242B8D721800698724 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CEEA9232B8D721800698724 /* Media.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		210AD3362B8D6A0300D60970 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		210AD3392B8D6A0300D60970 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		210AD33B2B8D6A0300D60970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CEEA9232B8D721800698724 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				210AD3302B8D6A0100D60970 /* Main.storyboard */,
 				210AD3362B8D6A0300D60970 /* Assets.xcassets */,
 				210AD3382B8D6A0300D60970 /* LaunchScreen.storyboard */,
+				8CEEA9232B8D721800698724 /* Media.xcassets */,
 				210AD33B2B8D6A0300D60970 /* Info.plist */,
 				210AD3332B8D6A0100D60970 /* GoTouchGrass.xcdatamodeld */,
 			);
@@ -130,6 +133,7 @@
 			files = (
 				210AD33A2B8D6A0300D60970 /* LaunchScreen.storyboard in Resources */,
 				210AD3372B8D6A0300D60970 /* Assets.xcassets in Resources */,
+				8CEEA9242B8D721800698724 /* Media.xcassets in Resources */,
 				210AD3322B8D6A0100D60970 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
