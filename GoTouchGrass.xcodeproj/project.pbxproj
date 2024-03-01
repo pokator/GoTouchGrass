@@ -14,6 +14,12 @@
 		210AD3352B8D6A0100D60970 /* GoTouchGrass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 210AD3332B8D6A0100D60970 /* GoTouchGrass.xcdatamodeld */; };
 		210AD3372B8D6A0300D60970 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 210AD3362B8D6A0300D60970 /* Assets.xcassets */; };
 		210AD33A2B8D6A0300D60970 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 210AD3382B8D6A0300D60970 /* LaunchScreen.storyboard */; };
+		8C53C58F2B928238000BCC29 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C53C58E2B928238000BCC29 /* GoogleService-Info.plist */; };
+		8C53C5922B92826F000BCC29 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8C53C5912B92826F000BCC29 /* FirebaseAnalytics */; };
+		8C53C5942B92826F000BCC29 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 8C53C5932B92826F000BCC29 /* FirebaseAnalyticsOnDeviceConversion */; };
+		8C53C5962B92826F000BCC29 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8C53C5952B92826F000BCC29 /* FirebaseAnalyticsSwift */; };
+		8C53C5982B92826F000BCC29 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 8C53C5972B92826F000BCC29 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		8C53C59A2B92826F000BCC29 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 8C53C5992B92826F000BCC29 /* FirebaseAppCheck */; };
 		8CEEA9242B8D721800698724 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CEEA9232B8D721800698724 /* Media.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +33,8 @@
 		210AD3362B8D6A0300D60970 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		210AD3392B8D6A0300D60970 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		210AD33B2B8D6A0300D60970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C53C58E2B928238000BCC29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8C53C59B2B9282E4000BCC29 /* GoTouchGrass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoTouchGrass.entitlements; sourceTree = "<group>"; };
 		8CEEA9232B8D721800698724 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -35,6 +43,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C53C5962B92826F000BCC29 /* FirebaseAnalyticsSwift in Frameworks */,
+				8C53C5922B92826F000BCC29 /* FirebaseAnalytics in Frameworks */,
+				8C53C5942B92826F000BCC29 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				8C53C59A2B92826F000BCC29 /* FirebaseAppCheck in Frameworks */,
+				8C53C5982B92826F000BCC29 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +73,8 @@
 		210AD3292B8D6A0100D60970 /* GoTouchGrass */ = {
 			isa = PBXGroup;
 			children = (
+				8C53C59B2B9282E4000BCC29 /* GoTouchGrass.entitlements */,
+				8C53C58E2B928238000BCC29 /* GoogleService-Info.plist */,
 				210AD32A2B8D6A0100D60970 /* AppDelegate.swift */,
 				210AD32C2B8D6A0100D60970 /* SceneDelegate.swift */,
 				210AD32E2B8D6A0100D60970 /* ViewController.swift */,
@@ -89,6 +104,13 @@
 			dependencies = (
 			);
 			name = GoTouchGrass;
+			packageProductDependencies = (
+				8C53C5912B92826F000BCC29 /* FirebaseAnalytics */,
+				8C53C5932B92826F000BCC29 /* FirebaseAnalyticsOnDeviceConversion */,
+				8C53C5952B92826F000BCC29 /* FirebaseAnalyticsSwift */,
+				8C53C5972B92826F000BCC29 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				8C53C5992B92826F000BCC29 /* FirebaseAppCheck */,
+			);
 			productName = GoTouchGrass;
 			productReference = 210AD3272B8D6A0100D60970 /* GoTouchGrass.app */;
 			productType = "com.apple.product-type.application";
@@ -117,6 +139,9 @@
 				Base,
 			);
 			mainGroup = 210AD31E2B8D6A0100D60970;
+			packageReferences = (
+				8C53C5902B92826F000BCC29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 210AD3282B8D6A0100D60970 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -133,6 +158,7 @@
 			files = (
 				210AD33A2B8D6A0300D60970 /* LaunchScreen.storyboard in Resources */,
 				210AD3372B8D6A0300D60970 /* Assets.xcassets in Resources */,
+				8C53C58F2B928238000BCC29 /* GoogleService-Info.plist in Resources */,
 				8CEEA9242B8D721800698724 /* Media.xcassets in Resources */,
 				210AD3322B8D6A0100D60970 /* Main.storyboard in Resources */,
 			);
@@ -298,6 +324,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GoTouchGrass/GoTouchGrass.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KUW3J63R43;
@@ -326,6 +353,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GoTouchGrass/GoTouchGrass.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KUW3J63R43;
@@ -371,6 +399,45 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8C53C5902B92826F000BCC29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.21.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8C53C5912B92826F000BCC29 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C53C5902B92826F000BCC29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		8C53C5932B92826F000BCC29 /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C53C5902B92826F000BCC29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		8C53C5952B92826F000BCC29 /* FirebaseAnalyticsSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C53C5902B92826F000BCC29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsSwift;
+		};
+		8C53C5972B92826F000BCC29 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C53C5902B92826F000BCC29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		8C53C5992B92826F000BCC29 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C53C5902B92826F000BCC29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		210AD3332B8D6A0100D60970 /* GoTouchGrass.xcdatamodeld */ = {
