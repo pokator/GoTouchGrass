@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0CF154F62B92A6DD002E84D0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF154F52B92A6DD002E84D0 /* LoginViewController.swift */; };
+		0CF154F82B92A966002E84D0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF154F72B92A966002E84D0 /* HomeViewController.swift */; };
+		0CF154FA2B92AD78002E84D0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF154F92B92AD78002E84D0 /* RegisterViewController.swift */; };
 		210AD32B2B8D6A0100D60970 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210AD32A2B8D6A0100D60970 /* AppDelegate.swift */; };
 		210AD32D2B8D6A0100D60970 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210AD32C2B8D6A0100D60970 /* SceneDelegate.swift */; };
 		210AD32F2B8D6A0100D60970 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210AD32E2B8D6A0100D60970 /* ViewController.swift */; };
@@ -24,6 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0CF154F52B92A6DD002E84D0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0CF154F72B92A966002E84D0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0CF154F92B92AD78002E84D0 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		210AD3272B8D6A0100D60970 /* GoTouchGrass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoTouchGrass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		210AD32A2B8D6A0100D60970 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		210AD32C2B8D6A0100D60970 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +84,9 @@
 				210AD32A2B8D6A0100D60970 /* AppDelegate.swift */,
 				210AD32C2B8D6A0100D60970 /* SceneDelegate.swift */,
 				210AD32E2B8D6A0100D60970 /* ViewController.swift */,
+				0CF154F92B92AD78002E84D0 /* RegisterViewController.swift */,
+				0CF154F52B92A6DD002E84D0 /* LoginViewController.swift */,
+				0CF154F72B92A966002E84D0 /* HomeViewController.swift */,
 				210AD3302B8D6A0100D60970 /* Main.storyboard */,
 				210AD3362B8D6A0300D60970 /* Assets.xcassets */,
 				210AD3382B8D6A0300D60970 /* LaunchScreen.storyboard */,
@@ -173,8 +182,11 @@
 			files = (
 				210AD32F2B8D6A0100D60970 /* ViewController.swift in Sources */,
 				210AD32B2B8D6A0100D60970 /* AppDelegate.swift in Sources */,
+				0CF154FA2B92AD78002E84D0 /* RegisterViewController.swift in Sources */,
 				210AD3352B8D6A0100D60970 /* GoTouchGrass.xcdatamodeld in Sources */,
+				0CF154F62B92A6DD002E84D0 /* LoginViewController.swift in Sources */,
 				210AD32D2B8D6A0100D60970 /* SceneDelegate.swift in Sources */,
+				0CF154F82B92A966002E84D0 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
