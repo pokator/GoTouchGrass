@@ -17,6 +17,7 @@
 		210AD3352B8D6A0100D60970 /* GoTouchGrass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 210AD3332B8D6A0100D60970 /* GoTouchGrass.xcdatamodeld */; };
 		210AD3372B8D6A0300D60970 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 210AD3362B8D6A0300D60970 /* Assets.xcassets */; };
 		210AD33A2B8D6A0300D60970 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 210AD3382B8D6A0300D60970 /* LaunchScreen.storyboard */; };
+		4331A08D2B991713003B5151 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4331A08C2B991713003B5151 /* TimerViewController.swift */; };
 		8C53C58F2B928238000BCC29 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C53C58E2B928238000BCC29 /* GoogleService-Info.plist */; };
 		8C53C5922B92826F000BCC29 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8C53C5912B92826F000BCC29 /* FirebaseAnalytics */; };
 		8C53C5942B92826F000BCC29 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 8C53C5932B92826F000BCC29 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -39,6 +40,7 @@
 		210AD3362B8D6A0300D60970 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		210AD3392B8D6A0300D60970 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		210AD33B2B8D6A0300D60970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4331A08C2B991713003B5151 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		8C53C58E2B928238000BCC29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8C53C59B2B9282E4000BCC29 /* GoTouchGrass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoTouchGrass.entitlements; sourceTree = "<group>"; };
 		8CEEA9232B8D721800698724 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 				0CF154F92B92AD78002E84D0 /* RegisterViewController.swift */,
 				0CF154F52B92A6DD002E84D0 /* LoginViewController.swift */,
 				0CF154F72B92A966002E84D0 /* HomeViewController.swift */,
+				4331A08C2B991713003B5151 /* TimerViewController.swift */,
 				210AD3302B8D6A0100D60970 /* Main.storyboard */,
 				210AD3362B8D6A0300D60970 /* Assets.xcassets */,
 				210AD3382B8D6A0300D60970 /* LaunchScreen.storyboard */,
@@ -184,6 +187,7 @@
 				210AD32B2B8D6A0100D60970 /* AppDelegate.swift in Sources */,
 				0CF154FA2B92AD78002E84D0 /* RegisterViewController.swift in Sources */,
 				210AD3352B8D6A0100D60970 /* GoTouchGrass.xcdatamodeld in Sources */,
+				4331A08D2B991713003B5151 /* TimerViewController.swift in Sources */,
 				0CF154F62B92A6DD002E84D0 /* LoginViewController.swift in Sources */,
 				210AD32D2B8D6A0100D60970 /* SceneDelegate.swift in Sources */,
 				0CF154F82B92A966002E84D0 /* HomeViewController.swift in Sources */,

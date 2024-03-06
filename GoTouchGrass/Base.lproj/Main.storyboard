@@ -50,7 +50,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Log In" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SBn-Q8-Tic">
-                                <rect key="frame" x="173" y="72" width="46.333333333333343" height="21"/>
+                                <rect key="frame" x="173.33333333333334" y="72" width="46.333333333333343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -115,7 +115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GHR-7s-waf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1661.8320610687022" y="-27.464788732394368"/>
+            <point key="canvasLocation" x="1815" y="-12"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="eiC-mY-S4h">
@@ -213,9 +213,43 @@
             </objects>
             <point key="canvasLocation" x="873" y="683"/>
         </scene>
+        <!--Timer View Controller-->
+        <scene sceneID="fBl-iP-XA5">
+            <objects>
+                <viewController id="Jsn-3r-lBl" customClass="TimerViewController" customModule="GoTouchGrass" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hoJ-kX-67U">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="ebA-Mz-HT9">
+                                <rect key="frame" x="0.0" y="749" width="393" height="70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="69" id="IYM-4V-jPI"/>
+                                    <constraint firstAttribute="width" secondItem="ebA-Mz-HT9" secondAttribute="height" multiplier="131:31" constant="101.41935483870969" id="qHJ-uv-yHb"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Home"/>
+                                    <segment title="Timer"/>
+                                    <segment title="Calendar"/>
+                                    <segment title="Map"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ly7-QH-zcO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ebA-Mz-HT9" firstAttribute="centerX" secondItem="hoJ-kX-67U" secondAttribute="centerX" id="SLu-dY-09d"/>
+                            <constraint firstItem="ebA-Mz-HT9" firstAttribute="centerY" secondItem="hoJ-kX-67U" secondAttribute="centerY" constant="357.5" id="avH-GZ-pa5"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="YdL-os-iIj"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KzV-TB-2Ev" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2645" y="-13"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="upd-vn-x18"/>
         <segue reference="WNc-YC-ZcZ"/>
         <segue reference="mYx-rc-uF3"/>
     </inferredMetricsTieBreakers>
