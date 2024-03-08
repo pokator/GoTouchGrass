@@ -128,7 +128,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="SHS-Wu-bYX">
                         <nil key="title"/>
-                        <button key="titleView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="wpV-OQ-dET">
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="wpV-OQ-dET">
                             <rect key="frame" x="176.66666666666666" y="7" width="40" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" red="0.0" green="0.0" blue="0.37476084180000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -141,7 +141,7 @@
                             </connections>
                         </button>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Euc-25-bCf">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="UHN-dq-EuP">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="UHN-dq-EuP">
                                 <rect key="frame" x="327" y="0.0" width="50" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.37476084180000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -384,7 +384,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="QyK-23-ZjL">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="1U9-qy-vPO">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="0XU-0z-8cf">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="0XU-0z-8cf">
                                 <rect key="frame" x="327" y="0.0" width="50" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.37476084180000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -491,7 +491,7 @@
         <!--Timer-->
         <scene sceneID="g9m-br-3zB">
             <objects>
-                <viewController title="Timer" id="zNW-R8-be0" sceneMemberID="viewController">
+                <viewController title="Timer" id="zNW-R8-be0" customClass="TimerViewController" customModule="GoTouchGrass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JpC-5R-qgb">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -505,15 +505,40 @@
                                     <segue destination="81F-LB-GyZ" kind="show" identifier="Timer" id="x1g-zt-63c"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LW-E2-Fi3">
+                                <rect key="frame" x="68" y="170" width="256" height="122"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="80"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="umm-tK-LJk">
+                                <rect key="frame" x="66" y="323" width="260" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </slider>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QE-l6-uqs">
+                                <rect key="frame" x="138" y="409" width="117" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="START"/>
+                                <connections>
+                                    <action selector="startButtonPressed:" destination="zNW-R8-be0" eventType="touchUpInside" id="waI-1N-dtM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="YuH-6R-2lK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="RDS-qT-iU3"/>
+                    <connections>
+                        <outlet property="startResetButton" destination="8QE-l6-uqs" id="vnI-2B-Jtu"/>
+                        <outlet property="timerSlider" destination="umm-tK-LJk" id="Bgk-gl-RxA"/>
+                        <outlet property="timerText" destination="9LW-E2-Fi3" id="9uZ-uw-ROr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iEu-cx-gT2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4691" y="-380"/>
+            <point key="canvasLocation" x="4690.8396946564881" y="-380.28169014084511"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="AIr-Ww-guB">
@@ -570,7 +595,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Kun-Vl-BBb">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="30a-of-TiT">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="LMs-qg-Whm">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="LMs-qg-Whm">
                                 <rect key="frame" x="327" y="0.0" width="50" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.37476084180000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
