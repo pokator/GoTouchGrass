@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C102B5B2B9A993D0050E7EC /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0C102B5A2B9A993D0050E7EC /* FirebaseAuth */; };
 		0CF154F62B92A6DD002E84D0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF154F52B92A6DD002E84D0 /* LoginViewController.swift */; };
 		0CF154F82B92A966002E84D0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF154F72B92A966002E84D0 /* HomeViewController.swift */; };
 		0CF154FA2B92AD78002E84D0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF154F92B92AD78002E84D0 /* RegisterViewController.swift */; };
@@ -52,6 +53,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C53C5962B92826F000BCC29 /* FirebaseAnalyticsSwift in Frameworks */,
+				0C102B5B2B9A993D0050E7EC /* FirebaseAuth in Frameworks */,
 				8C53C5922B92826F000BCC29 /* FirebaseAnalytics in Frameworks */,
 				8C53C5942B92826F000BCC29 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				8C53C59A2B92826F000BCC29 /* FirebaseAppCheck in Frameworks */,
@@ -62,11 +64,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C102B592B9A993D0050E7EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		210AD31E2B8D6A0100D60970 = {
 			isa = PBXGroup;
 			children = (
 				210AD3292B8D6A0100D60970 /* GoTouchGrass */,
 				210AD3282B8D6A0100D60970 /* Products */,
+				0C102B592B9A993D0050E7EC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +132,7 @@
 				8C53C5952B92826F000BCC29 /* FirebaseAnalyticsSwift */,
 				8C53C5972B92826F000BCC29 /* FirebaseAnalyticsWithoutAdIdSupport */,
 				8C53C5992B92826F000BCC29 /* FirebaseAppCheck */,
+				0C102B5A2B9A993D0050E7EC /* FirebaseAuth */,
 			);
 			productName = GoTouchGrass;
 			productReference = 210AD3272B8D6A0100D60970 /* GoTouchGrass.app */;
@@ -428,6 +439,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0C102B5A2B9A993D0050E7EC /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C53C5902B92826F000BCC29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
 		8C53C5912B92826F000BCC29 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8C53C5902B92826F000BCC29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

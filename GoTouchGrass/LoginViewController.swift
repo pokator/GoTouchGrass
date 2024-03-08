@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
@@ -23,6 +24,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         userIDField.delegate = self
         passwordField.delegate = self
+        passwordField.isSecureTextEntry = true
     }
 
     // TODO: Firebase
@@ -31,9 +33,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let pass = passwordField.text!
         if (!name.isEmpty && !pass.isEmpty) {
             validLogin = true
+            self.loginLabel.text = "Valid login"
+            Auth.auth().signIn(withEmail: name,
+                               password: pass){
+                (authResult, error) in
+                if let error = error as NSError? {
+                    self.loginLabel.text = "\(error.localizedDescription)"
+                } else {
+                    self.loginLabel.text = "Invalid login"
+                }
+            }
         } else {
-            var message = "Invalid login"
-            loginLabel.text = message
+            loginLabel.text = "Invalid login"
         }
     }
 
@@ -48,12 +59,22 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.endEditing(true)
     }
     
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == loginSegueID {
+            if validLogin {
+                return true
+            }
+            return false
+        }
+        return true
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == loginSegueID && validLogin,
+        if segue.identifier == loginSegueID,
            let destination = segue.destination as? HomeViewController {
             // prep here
         }
-        if segue.identifier == registerSegueID && validLogin,
+        if segue.identifier == registerSegueID,
            let destination = segue.destination as? RegisterViewController {
             // prep here
         }
