@@ -10,9 +10,11 @@ import FirebaseAuth
 
 class RegisterViewController: UIViewController {
     
-    let registerSuccessSegueID = "registerSuccessSegueIdentifier"
+    let registerSuccessSegueID = "registerSuccessSegueID"
 
     @IBOutlet weak var emailField: UITextField!
+    
+    @IBOutlet weak var usernameField: UITextField!
     
     @IBOutlet weak var passwordField: UITextField!
     
@@ -30,14 +32,14 @@ class RegisterViewController: UIViewController {
     }
 
     @IBAction func onRegisterPressed(_ sender: Any) {
-        if (((emailField.text?.isEmpty) == false) && ((passwordField.text?.isEmpty) == false)) {
+        if (((emailField.text?.isEmpty) == false) && ((usernameField.text?.isEmpty) == false) && ((passwordField.text?.isEmpty) == false)) {
             let name = emailField.text!
             let pass = passwordField.text!
             if (!name.isEmpty && !pass.isEmpty && (pass == confirmPassField.text)) {
                 //can register
                 validRegister = true
                 Auth.auth().createUser(withEmail: emailField.text!,
-                                   password: passwordField.text!) {
+                                       password: passwordField.text!) {
                     (authResult, error) in
                     if let error = error as NSError? {
                         self.statusLabel.text = "\(error.localizedDescription)"
@@ -45,6 +47,13 @@ class RegisterViewController: UIViewController {
                         self.statusLabel.text = ""
                     }
                 }
+                let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+                print("Changing username", usernameField.text!)
+                changeRequest?.displayName = usernameField.text!
+                changeRequest?.commitChanges { error in
+                    // ...
+                }
+                Auth.auth().currentUser?.reload()
             }
         }
     }
