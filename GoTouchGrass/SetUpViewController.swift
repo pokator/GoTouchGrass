@@ -31,8 +31,8 @@ class SetUpViewController: UIViewController {
             changeRequest?.commitChanges { error in
                 // ...
             }
-            Auth.auth().currentUser?.reload()
             validUsername = true
+            Auth.auth().currentUser?.reload()
         }
     }
     
