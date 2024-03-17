@@ -22,6 +22,7 @@
 		4331A08D2B991713003B5151 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4331A08C2B991713003B5151 /* TimerViewController.swift */; };
 		892B527E2BA5262A00DD6149 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892B527D2BA5262900DD6149 /* ProfileViewController.swift */; };
 		892B52822BA52EF200DD6149 /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892B52812BA52EF200DD6149 /* ProfileSettingsViewController.swift */; };
+		892B52842BA67C6500DD6149 /* SetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892B52832BA67C6500DD6149 /* SetUpViewController.swift */; };
 		8C53C58F2B928238000BCC29 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C53C58E2B928238000BCC29 /* GoogleService-Info.plist */; };
 		8C53C5922B92826F000BCC29 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8C53C5912B92826F000BCC29 /* FirebaseAnalytics */; };
 		8C53C5942B92826F000BCC29 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 8C53C5932B92826F000BCC29 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -48,6 +49,7 @@
 		4331A08C2B991713003B5151 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		892B527D2BA5262900DD6149 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		892B52812BA52EF200DD6149 /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
+		892B52832BA67C6500DD6149 /* SetUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpViewController.swift; sourceTree = "<group>"; };
 		8C53C58E2B928238000BCC29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8C53C59B2B9282E4000BCC29 /* GoTouchGrass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoTouchGrass.entitlements; sourceTree = "<group>"; };
 		8CEEA9232B8D721800698724 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				0CF154F72B92A966002E84D0 /* HomeViewController.swift */,
 				4331A08C2B991713003B5151 /* TimerViewController.swift */,
 				210AD3302B8D6A0100D60970 /* Main.storyboard */,
+				892B52832BA67C6500DD6149 /* SetUpViewController.swift */,
 				892B52812BA52EF200DD6149 /* ProfileSettingsViewController.swift */,
 				892B527D2BA5262900DD6149 /* ProfileViewController.swift */,
 				210AD38B2BA3597000D60970 /* MapViewController.swift */,
@@ -203,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				892B52842BA67C6500DD6149 /* SetUpViewController.swift in Sources */,
 				210AD32F2B8D6A0100D60970 /* ViewController.swift in Sources */,
 				210AD32B2B8D6A0100D60970 /* AppDelegate.swift in Sources */,
 				892B527E2BA5262A00DD6149 /* ProfileViewController.swift in Sources */,
