@@ -294,6 +294,8 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <tabBarAppearance key="standardAppearance"/>
+                        <tabBarAppearance key="scrollEdgeAppearance"/>
                     </tabBar>
                     <connections>
                         <segue destination="FXH-2b-4QE" kind="relationship" relationship="viewControllers" id="hX7-hU-uiw"/>
@@ -306,12 +308,12 @@
             </objects>
             <point key="canvasLocation" x="1769" y="-194"/>
         </scene>
-        <!--Item-->
+        <!--Home-->
         <scene sceneID="sDO-Vq-fCP">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FXH-2b-4QE" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" selectedImage="house" catalog="system" id="qU8-BL-LY6">
-                        <color key="badgeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="house.circle.fill" catalog="system" id="qU8-BL-LY6">
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="H3l-hE-5ZD">
@@ -327,11 +329,14 @@
             </objects>
             <point key="canvasLocation" x="2889" y="-1037"/>
         </scene>
-        <!--Item-->
+        <!--Timer-->
         <scene sceneID="vqS-69-Q3Y">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g5u-TH-css" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" selectedImage="fitness.timer" catalog="system" id="Vs6-Bz-ORv"/>
+                    <tabBarItem key="tabBarItem" title="Timer" id="Vs6-Bz-ORv">
+                        <imageReference key="image" image="timer.circle.fill" catalog="system" symbolScale="default"/>
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="i5C-SM-dLj">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
@@ -346,11 +351,14 @@
             </objects>
             <point key="canvasLocation" x="3714" y="-380"/>
         </scene>
-        <!--Item-->
+        <!--Nearby-->
         <scene sceneID="GKa-8p-BDG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cw2-cC-5k4" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" selectedImage="mappin.circle.fill" catalog="system" id="u9O-U4-zSM"/>
+                    <tabBarItem key="tabBarItem" title="Nearby" selectedImage="mappin.circle.fill" catalog="system" id="u9O-U4-zSM">
+                        <imageReference key="image" image="mappin.circle.fill" catalog="system" symbolScale="default"/>
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4qE-cK-fxW">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
@@ -365,11 +373,14 @@
             </objects>
             <point key="canvasLocation" x="3714" y="299"/>
         </scene>
-        <!--Item-->
+        <!--History-->
         <scene sceneID="HsB-s1-oIi">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="nEP-B8-Vn7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" selectedImage="calendar.circle.fill" catalog="system" id="XrE-08-znX"/>
+                    <tabBarItem key="tabBarItem" title="History" selectedImage="calendar.circle.fill" catalog="system" id="XrE-08-znX">
+                        <imageReference key="image" image="calendar.circle.fill" catalog="system" symbolScale="default"/>
+                        <color key="badgeColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hxH-hG-9qk">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
@@ -1151,12 +1162,12 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar.circle.fill" catalog="system" width="128" height="123"/>
-        <image name="fitness.timer" catalog="system" width="128" height="123"/>
         <image name="gearshape" catalog="system" width="128" height="123"/>
         <image name="hanger" catalog="system" width="128" height="99"/>
-        <image name="house" catalog="system" width="128" height="104"/>
+        <image name="house.circle.fill" catalog="system" width="128" height="123"/>
         <image name="logoGTG-removebg-preview" width="495" height="504"/>
         <image name="mappin.circle.fill" catalog="system" width="128" height="123"/>
         <image name="person" catalog="system" width="128" height="121"/>
+        <image name="timer.circle.fill" catalog="system" width="128" height="123"/>
     </resources>
 </document>
