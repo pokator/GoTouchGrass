@@ -23,6 +23,7 @@
 		892B527E2BA5262A00DD6149 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892B527D2BA5262900DD6149 /* ProfileViewController.swift */; };
 		892B52822BA52EF200DD6149 /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892B52812BA52EF200DD6149 /* ProfileSettingsViewController.swift */; };
 		892B52842BA67C6500DD6149 /* SetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892B52832BA67C6500DD6149 /* SetUpViewController.swift */; };
+		8C3429BC2BA90895000BCC61 /* README.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 8C3429BB2BA90895000BCC61 /* README.pdf */; };
 		8C53C58F2B928238000BCC29 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8C53C58E2B928238000BCC29 /* GoogleService-Info.plist */; };
 		8C53C5922B92826F000BCC29 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 8C53C5912B92826F000BCC29 /* FirebaseAnalytics */; };
 		8C53C5942B92826F000BCC29 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 8C53C5932B92826F000BCC29 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -50,6 +51,7 @@
 		892B527D2BA5262900DD6149 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		892B52812BA52EF200DD6149 /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		892B52832BA67C6500DD6149 /* SetUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpViewController.swift; sourceTree = "<group>"; };
+		8C3429BB2BA90895000BCC61 /* README.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = README.pdf; sourceTree = "<group>"; };
 		8C53C58E2B928238000BCC29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8C53C59B2B9282E4000BCC29 /* GoTouchGrass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoTouchGrass.entitlements; sourceTree = "<group>"; };
 		8CEEA9232B8D721800698724 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 		210AD3292B8D6A0100D60970 /* GoTouchGrass */ = {
 			isa = PBXGroup;
 			children = (
+				8C3429BB2BA90895000BCC61 /* README.pdf */,
 				8C53C59B2B9282E4000BCC29 /* GoTouchGrass.entitlements */,
 				8C53C58E2B928238000BCC29 /* GoogleService-Info.plist */,
 				210AD32A2B8D6A0100D60970 /* AppDelegate.swift */,
@@ -193,6 +196,7 @@
 			files = (
 				210AD33A2B8D6A0300D60970 /* LaunchScreen.storyboard in Resources */,
 				210AD3372B8D6A0300D60970 /* Assets.xcassets in Resources */,
+				8C3429BC2BA90895000BCC61 /* README.pdf in Resources */,
 				8C53C58F2B928238000BCC29 /* GoogleService-Info.plist in Resources */,
 				8CEEA9242B8D721800698724 /* Media.xcassets in Resources */,
 				210AD3322B8D6A0100D60970 /* Main.storyboard in Resources */,
