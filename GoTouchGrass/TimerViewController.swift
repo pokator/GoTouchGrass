@@ -8,7 +8,7 @@
 import UIKit
 import UserNotifications
 
-class TimerViewController: UIViewController {
+class TimerViewController: UIViewController, UNUserNotificationCenterDelegate{
 
     @IBOutlet weak var timerText: UILabel!
     @IBOutlet weak var timerSlider: UISlider!
@@ -19,35 +19,47 @@ class TimerViewController: UIViewController {
     var timerCounting:Bool = false
     
     // Most of the timer code was from youtube video https://www.youtube.com/watch?v=3TbdoVhgQmE
-
-    // Variables
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Set the delegate of UNUserNotificationCenter to allow notifs on foreground
+        UNUserNotificationCenter.current().delegate = self
         
         // setting up notifications for the timer!
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             // Handle the response if needed
         }
-
+        
         startResetButton.setTitleColor(UIColor.green, for: .normal)
         timerText.text = makeTimeString(minutes: 0, seconds: 5)
         
         // Do any additional setup after loading the view.
     }
+
+    // Interactable slider to make the timer
+    @IBAction func sliderMoved(_ sender: UISlider) {
+        let value = Int(sender.value)
+        let minutes = value / 60
+        
+        count = minutes * 60
+        timerText.text = makeTimeString(minutes: minutes, seconds: 0)
+    }
+    
     
     @IBAction func startButtonPressed(_ sender: Any) {
         if (timerCounting) {
             timerCounting = false
             timer.invalidate()
+            timerSlider.isEnabled = true
             startResetButton.setTitle("START", for: .normal)
             startResetButton.setTitleColor(UIColor.green, for: .normal)
-            self.timerText.text = makeTimeString(minutes: 25, seconds: 0)
-            count = 1500
+            self.timerText.text = makeTimeString(minutes: 0, seconds: 5)
+            timerSlider.value = 5
+            count = 5
         } else {
             timerCounting = true
             startResetButton.setTitle("RESET", for: .normal)
             startResetButton.setTitleColor(UIColor.red, for: .normal)
+            timerSlider.isEnabled = false
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
         }
         
@@ -55,8 +67,18 @@ class TimerViewController: UIViewController {
     
     @objc func timerCounter () -> Void {
         if count == 0 {
+            // shows notification and stops timer
             showNotification()
             timer.invalidate()
+            
+            // enables the slider
+            timerSlider.isEnabled = true
+            
+            // resets the start button
+            startResetButton.setTitle("START", for: .normal)
+            startResetButton.setTitleColor(UIColor.green, for: .normal)
+            
+            timerCounting = false
         } else {
             count = count - 1
             let time = secondstoMinutesSeconds(seconds: count)
@@ -66,26 +88,25 @@ class TimerViewController: UIViewController {
     }
     
     func showNotification() {
+        let notificationCenter = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
         content.title = "Timer Completed"
         content.body = "Your timer has reached 0 seconds!"
         content.sound = .default
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.01, repeats: false)
         let request = UNNotificationRequest(identifier: "timerNotification", content: content, trigger: trigger)
 
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["timerNotification"])
-        UNUserNotificationCenter.current().add(request) { error in
+        notificationCenter.removePendingNotificationRequests(withIdentifiers: ["timerNotification"])
+        notificationCenter.add(request) { error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             }
         }
-
     }
     
     func secondstoMinutesSeconds (seconds: Int) -> (Int, Int) {
-        return ((seconds % 3600) % 60, ((seconds % 3600) / 60))
+        return ((seconds % 3600) % 60, (seconds / 60))
     }
     
     func makeTimeString(minutes: Int, seconds: Int) -> String {
@@ -96,5 +117,13 @@ class TimerViewController: UIViewController {
         return timeString
     }
     
+    // MARK: - UNUserNotificationCenterDelegate
+
+    // Handle notification received while the app is in the foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        // Display the notification alert while the app is in the foreground
+        completionHandler([.banner, .sound])
+        
+    }
 
 }

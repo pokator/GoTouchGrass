@@ -778,9 +778,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="umm-tK-LJk">
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="5400" translatesAutoresizingMaskIntoConstraints="NO" id="umm-tK-LJk">
                                 <rect key="frame" x="66" y="323" width="260" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="sliderMoved:" destination="zNW-R8-be0" eventType="valueChanged" id="aY2-39-gLY"/>
+                                </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QE-l6-uqs">
                                 <rect key="frame" x="138" y="409" width="117" height="35"/>
@@ -807,7 +810,7 @@
                     <navigationItem key="navigationItem" id="RDS-qT-iU3"/>
                     <connections>
                         <outlet property="startResetButton" destination="8QE-l6-uqs" id="vnI-2B-Jtu"/>
-                        <outlet property="timerSlider" destination="umm-tK-LJk" id="Bgk-gl-RxA"/>
+                        <outlet property="timerSlider" destination="umm-tK-LJk" id="5kn-ll-THQ"/>
                         <outlet property="timerText" destination="9LW-E2-Fi3" id="9uZ-uw-ROr"/>
                     </connections>
                 </viewController>
