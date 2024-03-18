@@ -14,7 +14,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordField: UITextField!  // The text field to enter password
     @IBOutlet weak var loginLabel: UILabel!         // The label that displays login status
     
-    let loginSegueID = "loginSuccssSegueIdentifier"
+    let loginSegueID = "loginSuccessSegueIdentifier"
     let registerSegueID = "registerSegueIdentifier"
     
     var validLogin = false
@@ -26,8 +26,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordField.delegate = self
         passwordField.isSecureTextEntry = true
     }
-
-    // TODO: Firebase
+    
     @IBAction func buttonPressed(_ sender: Any) {
         let name = userIDField.text!
         let pass = passwordField.text!
@@ -43,6 +42,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.loginLabel.text = "Invalid login"
                 }
             }
+            
         } else {
             loginLabel.text = "Invalid login"
         }

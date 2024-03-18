@@ -10,7 +10,7 @@ import FirebaseAuth
 
 class RegisterViewController: UIViewController {
     
-    let registerSuccessSegueID = "registerSuccessSegueIdentifier"
+    let registerSuccessSegueID = "registerSuccessSegueID"
 
     @IBOutlet weak var emailField: UITextField!
     
