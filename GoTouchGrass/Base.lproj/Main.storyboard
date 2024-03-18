@@ -912,10 +912,10 @@
                                 <buttonConfiguration key="configuration" style="plain" buttonSize="large">
                                     <backgroundConfiguration key="background" image="gearshape" catalog="system"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="0zQ-cR-asb" kind="show" identifier="MapSettings" id="MSx-1u-OFw"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <segue destination="0zQ-cR-asb" kind="show" identifier="MapSettings" id="xpk-Pj-nEx"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -1156,7 +1156,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sd0-tG-RSH"/>
+        <segue reference="lCi-BQ-j12"/>
         <segue reference="Ge1-g8-gLH"/>
         <segue reference="3d4-bF-Wsh"/>
     </inferredMetricsTieBreakers>
