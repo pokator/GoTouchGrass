@@ -14,6 +14,8 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate{
     @IBOutlet weak var timerSlider: UISlider!
     @IBOutlet weak var startResetButton: UIButton!
     
+    var timerDoneSegue = "Timer"
+    
     var timer:Timer = Timer()
     var count:Int = 5
     var timerCounting:Bool = false
@@ -65,6 +67,16 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate{
         
     }
     
+    // Segue for timer finishing!
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == timerDoneSegue,
+        let destination = segue.destination as? HomeViewController { // TODO CHANGE HOME VIEW CONTROLLER TO DONE TIMER SCREEN
+            // prep here
+        }
+    }
+    
+    // MARK: - Timer schenanigans
+    
     @objc func timerCounter () -> Void {
         if count == 0 {
             // shows notification and stops timer
@@ -74,18 +86,33 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate{
             // enables the slider
             timerSlider.isEnabled = true
             
-            // resets the start button
-            startResetButton.setTitle("START", for: .normal)
-            startResetButton.setTitleColor(UIColor.green, for: .normal)
+            timerCounting = true
             
-            timerCounting = false
+            // SEGUES TO NEXT SCREEN!
+            performSegue(withIdentifier: timerDoneSegue, sender: self)
         } else {
             count = count - 1
             let time = secondstoMinutesSeconds(seconds: count)
             let timeString = makeTimeString(minutes: time.1, seconds: time.0)
             timerText.text = timeString
+            timerSlider.value = Float(count)
         }
     }
+
+    
+    func secondstoMinutesSeconds (seconds: Int) -> (Int, Int) {
+        return ((seconds % 3600) % 60, (seconds / 60))
+    }
+    
+    func makeTimeString(minutes: Int, seconds: Int) -> String {
+        var timeString = ""
+        timeString += String(format: "%02d", minutes)
+        timeString += " : "
+        timeString += String(format: "%02d", seconds)
+        return timeString
+    }
+    
+    // MARK: - UNUserNotificationCenterDelegate
     
     func showNotification() {
         let notificationCenter = UNUserNotificationCenter.current()
@@ -104,20 +131,6 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate{
             }
         }
     }
-    
-    func secondstoMinutesSeconds (seconds: Int) -> (Int, Int) {
-        return ((seconds % 3600) % 60, (seconds / 60))
-    }
-    
-    func makeTimeString(minutes: Int, seconds: Int) -> String {
-        var timeString = ""
-        timeString += String(format: "%02d", minutes)
-        timeString += " : "
-        timeString += String(format: "%02d", seconds)
-        return timeString
-    }
-    
-    // MARK: - UNUserNotificationCenterDelegate
 
     // Handle notification received while the app is in the foreground
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
