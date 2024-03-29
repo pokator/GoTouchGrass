@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class SetUpViewController: UIViewController {
     
@@ -34,6 +35,15 @@ class SetUpViewController: UIViewController {
             validUsername = true
             Auth.auth().currentUser?.reload()
         }
+    }
+    
+    @IBAction func onLocRadiusChanged(_ sender: Any) {
+    }
+    
+    @IBAction func onPref1ValChanged(_ sender: Any) {
+    }
+    
+    @IBAction func onPref2ValChanged(_ sender: Any) {
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {

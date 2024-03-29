@@ -31,7 +31,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let name = userIDField.text!
         let pass = passwordField.text!
         if (!name.isEmpty && !pass.isEmpty) {
-            validLogin = true
             self.loginLabel.text = "Valid login"
             Auth.auth().signIn(withEmail: name,
                                password: pass){
@@ -41,6 +40,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 } else {
                     self.loginLabel.text = "Invalid login"
                 }
+                self.validLogin = (authResult != nil)
             }
             
         } else {

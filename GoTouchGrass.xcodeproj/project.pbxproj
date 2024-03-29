@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0C102B5B2B9A993D0050E7EC /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0C102B5A2B9A993D0050E7EC /* FirebaseAuth */; };
+		0CD79F862BB74F7F00AC423E /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD79F852BB74F7F00AC423E /* FirebaseDatabase */; };
+		0CD79F882BB74F7F00AC423E /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD79F872BB74F7F00AC423E /* FirebaseDatabaseSwift */; };
 		0CF154F62B92A6DD002E84D0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF154F52B92A6DD002E84D0 /* LoginViewController.swift */; };
 		0CF154F82B92A966002E84D0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF154F72B92A966002E84D0 /* HomeViewController.swift */; };
 		0CF154FA2B92AD78002E84D0 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF154F92B92AD78002E84D0 /* RegisterViewController.swift */; };
@@ -62,11 +64,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0CD79F882BB74F7F00AC423E /* FirebaseDatabaseSwift in Frameworks */,
 				8C53C5962B92826F000BCC29 /* FirebaseAnalyticsSwift in Frameworks */,
 				0C102B5B2B9A993D0050E7EC /* FirebaseAuth in Frameworks */,
 				8C53C5922B92826F000BCC29 /* FirebaseAnalytics in Frameworks */,
 				8C53C5942B92826F000BCC29 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 				8C53C59A2B92826F000BCC29 /* FirebaseAppCheck in Frameworks */,
+				0CD79F862BB74F7F00AC423E /* FirebaseDatabase in Frameworks */,
 				8C53C5982B92826F000BCC29 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,6 +152,8 @@
 				8C53C5972B92826F000BCC29 /* FirebaseAnalyticsWithoutAdIdSupport */,
 				8C53C5992B92826F000BCC29 /* FirebaseAppCheck */,
 				0C102B5A2B9A993D0050E7EC /* FirebaseAuth */,
+				0CD79F852BB74F7F00AC423E /* FirebaseDatabase */,
+				0CD79F872BB74F7F00AC423E /* FirebaseDatabaseSwift */,
 			);
 			productName = GoTouchGrass;
 			productReference = 210AD3272B8D6A0100D60970 /* GoTouchGrass.app */;
@@ -469,6 +475,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8C53C5902B92826F000BCC29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		0CD79F852BB74F7F00AC423E /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C53C5902B92826F000BCC29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		0CD79F872BB74F7F00AC423E /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C53C5902B92826F000BCC29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
 		};
 		8C53C5912B92826F000BCC29 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
