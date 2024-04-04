@@ -8,6 +8,11 @@
 import Foundation
 
 struct UserPrefsModel: Identifiable, Codable {
-  var id: String?
-  var text: String
+    var id: String?
+    var text: String
+    
+    var pref0:Bool
+    var pref1:Bool
+    
+    var locRadius:Float
 }

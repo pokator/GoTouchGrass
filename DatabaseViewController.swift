@@ -64,7 +64,7 @@ class DatabaseViewController: UIViewController {
         }
 
         // 3
-        let userPrefs = UserPrefsModel(text: newDataText)
+        let userPrefs = UserPrefsModel(text: newDataText, pref0:false, pref1:false, locRadius:0.0 )
 
         do {
           // 4

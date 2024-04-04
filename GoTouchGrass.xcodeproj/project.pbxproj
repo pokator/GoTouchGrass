@@ -93,7 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				0CE39C912BB77AD300D32E6B /* DatabaseViewController.swift */,
-				0CE39C932BB7808500D32E6B /* UserPrefsModel.swift */,
 				210AD3292B8D6A0100D60970 /* GoTouchGrass */,
 				210AD3282B8D6A0100D60970 /* Products */,
 				0C102B592B9A993D0050E7EC /* Frameworks */,
@@ -111,6 +110,7 @@
 		210AD3292B8D6A0100D60970 /* GoTouchGrass */ = {
 			isa = PBXGroup;
 			children = (
+				0CE39C932BB7808500D32E6B /* UserPrefsModel.swift */,
 				8C3429BB2BA90895000BCC61 /* README.pdf */,
 				8C53C59B2B9282E4000BCC29 /* GoTouchGrass.entitlements */,
 				8C53C58E2B928238000BCC29 /* GoogleService-Info.plist */,

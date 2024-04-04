@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hf3-k1-QYU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WF4-Gw-bPH">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
@@ -109,7 +109,7 @@
             <objects>
                 <viewController title="Home" id="nHB-Z8-Sxj" customClass="HomeViewController" customModule="GoTouchGrass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bId-ZY-isM">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Today's Activities" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PtZ-yZ-Ccg">
@@ -135,7 +135,7 @@
                     <navigationItem key="navigationItem" id="SHS-Wu-bYX">
                         <nil key="title"/>
                         <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="wpV-OQ-dET">
-                            <rect key="frame" x="176.66666666666666" y="7" width="40" height="30"/>
+                            <rect key="frame" x="176.66666666666666" y="13" width="40" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="tintColor" red="0.0" green="0.0" blue="0.37476084180000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="Button"/>
@@ -148,7 +148,7 @@
                         </button>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Euc-25-bCf">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="UHN-dq-EuP">
-                                <rect key="frame" x="327" y="0.0" width="50" height="44"/>
+                                <rect key="frame" x="327" y="6" width="50" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.37476084180000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <buttonConfiguration key="configuration" style="plain" buttonSize="large">
@@ -375,7 +375,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="H3l-hE-5ZD">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -397,7 +397,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="i5C-SM-dLj">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -419,7 +419,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="4qE-cK-fxW">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -441,7 +441,7 @@
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hxH-hG-9qk">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -458,7 +458,7 @@
             <objects>
                 <viewController title="Profile" id="2uU-Rn-Hbn" customClass="ProfileViewController" customModule="GoTouchGrass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w4n-Hq-tPe">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RhM-DG-XGw">
@@ -533,7 +533,7 @@
                     <navigationItem key="navigationItem" id="QyK-23-ZjL">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="1U9-qy-vPO">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="0XU-0z-8cf">
-                                <rect key="frame" x="327" y="0.0" width="50" height="44"/>
+                                <rect key="frame" x="327" y="6" width="50" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.37476084180000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <buttonConfiguration key="configuration" style="plain" buttonSize="large">
@@ -559,7 +559,7 @@
             <objects>
                 <viewController title="Settings" id="4Ca-4j-Slb" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0OL-Id-hGA">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6VF-rz-vLa">
@@ -633,7 +633,7 @@
             <objects>
                 <viewController id="xDm-vQ-Ig7" customClass="ProfileSettingsViewController" customModule="GoTouchGrass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wwR-ga-nt0">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Change Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pzh-wh-NL8">
@@ -738,7 +738,7 @@
             <objects>
                 <viewController title="Study Buddy" id="fE7-Sf-zbz" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="6ep-K9-wbA">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Study Buddy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mhx-WJ-fSF">
@@ -783,7 +783,7 @@
             <objects>
                 <viewController title="Customize" id="J3I-FY-Est" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RYj-PZ-nZB">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Buddy Setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHa-Bb-ZKV">
@@ -837,7 +837,7 @@
             <objects>
                 <viewController title="Timer" id="zNW-R8-be0" customClass="TimerViewController" customModule="GoTouchGrass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JpC-5R-qgb">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9LW-E2-Fi3">
@@ -892,7 +892,7 @@
             <objects>
                 <viewController id="81F-LB-GyZ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Itd-AF-0hD">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQY-dk-gHb">
@@ -919,7 +919,7 @@
             <objects>
                 <viewController id="xSM-PU-cum" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qzc-RB-DPO">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="MUG-JD-ERg"/>
                         <color key="backgroundColor" red="0.88235294119999996" green="0.92156862750000001" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -935,7 +935,7 @@
             <objects>
                 <viewController title="Nearby" id="6UR-aB-Y59" customClass="MapViewController" customModule="GoTouchGrass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Pu-rM-MAa">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9nC-nR-IUc">
@@ -964,7 +964,7 @@
                     <navigationItem key="navigationItem" id="Kun-Vl-BBb">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="30a-of-TiT">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="LMs-qg-Whm">
-                                <rect key="frame" x="327" y="0.0" width="50" height="44"/>
+                                <rect key="frame" x="327" y="6" width="50" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.0" green="0.0" blue="0.37476084180000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <buttonConfiguration key="configuration" style="plain" buttonSize="large">
@@ -989,7 +989,7 @@
             <objects>
                 <viewController id="0zQ-cR-asb" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pv4-Qz-dHC">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Map Preferences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqK-fd-8Tz">
@@ -1032,7 +1032,7 @@
             <objects>
                 <viewController id="vHn-s1-Fy3" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="G7K-DO-G0H">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.88235294119999996" green="0.92156862750000001" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qAF-JH-QHv">
@@ -1067,7 +1067,7 @@
             <objects>
                 <viewController id="qNI-Fc-vUc" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TmP-tc-NUV">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="ebJ-8M-oj0"/>
                         <color key="backgroundColor" red="0.88235294119999996" green="0.92156862750000001" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1082,11 +1082,11 @@
         <scene sceneID="EyQ-GZ-2nS">
             <objects>
                 <viewController id="WF4-Gw-bPH" customClass="SetUpViewController" customModule="GoTouchGrass" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="9gc-Kd-beV">
+                    <view key="view" contentMode="scaleToFill" id="9gc-Kd-beV">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00z-F5-HAd">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00z-F5-HAd">
                                 <rect key="frame" x="95" y="688" width="203" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="SAVE" cornerStyle="capsule">
@@ -1095,7 +1095,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="savePressed:" destination="WF4-Gw-bPH" eventType="touchUpInside" id="Jlu-cg-Igy"/>
-                                    <segue destination="H8f-Iq-rFv" kind="presentation" identifier="setupSuccessSegueIdentifier" modalPresentationStyle="fullScreen" id="ZX5-7f-tbP"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Set up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZO-vp-TUk">
@@ -1116,8 +1115,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location radius" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gR-nn-gi1">
-                                <rect key="frame" x="32" y="304" width="123" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location radius (in miles)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gR-nn-gi1">
+                                <rect key="frame" x="32" y="304" width="201" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="lOx-Li-TG3"/>
                                 </constraints>
@@ -1125,7 +1124,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="nfV-2N-XyU">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="0.0" maxValue="50" translatesAutoresizingMaskIntoConstraints="NO" id="nfV-2N-XyU">
                                 <rect key="frame" x="30" y="334" width="365" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="29" id="6Fo-1u-OKk"/>
@@ -1134,7 +1133,7 @@
                                     <action selector="onLocRadiusChanged:" destination="WF4-Gw-bPH" eventType="valueChanged" id="V9B-jd-4A3"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Preference 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMz-iJ-d0M">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preference 1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMz-iJ-d0M">
                                 <rect key="frame" x="32" y="512.33333333333337" width="100" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="TWe-g7-qzq"/>
@@ -1143,8 +1142,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Preference 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQ1-Ra-Zek">
-                                <rect key="frame" x="32" y="562.33333333333337" width="103" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preference 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQ1-Ra-Zek">
+                                <rect key="frame" x="32" y="562.33333333333337" width="103" height="12.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1158,19 +1157,19 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uLV-Dt-Sv4">
-                                <rect key="frame" x="312" y="508.66666666666674" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uLV-Dt-Sv4">
+                                <rect key="frame" x="312" y="508.66666666666669" width="51" height="29.333333333333314"/>
                                 <connections>
                                     <action selector="onPref1ValChanged:" destination="WF4-Gw-bPH" eventType="valueChanged" id="LbY-gL-Vnu"/>
                                 </connections>
                             </switch>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bwk-jd-dCA">
-                                <rect key="frame" x="312" y="558" width="51" height="31"/>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Bwk-jd-dCA">
+                                <rect key="frame" x="312" y="558" width="51" height="21"/>
                                 <connections>
                                     <action selector="onPref2ValChanged:" destination="WF4-Gw-bPH" eventType="valueChanged" id="RDy-5o-5be"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Activity Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7a-qO-Tc8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Activity Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q7a-qO-Tc8">
                                 <rect key="frame" x="33" y="461.66666666666669" width="104" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="uxb-nU-8Bt"/>
@@ -1189,12 +1188,14 @@
                             <constraint firstItem="V6M-x5-kpk" firstAttribute="centerX" secondItem="9gc-Kd-beV" secondAttribute="centerX" id="6Ay-hi-TEf"/>
                             <constraint firstItem="h9A-l2-ghs" firstAttribute="bottom" secondItem="00z-F5-HAd" secondAttribute="bottom" constant="119" id="6XF-v6-rOf"/>
                             <constraint firstItem="uLV-Dt-Sv4" firstAttribute="leading" secondItem="h9A-l2-ghs" secondAttribute="leading" constant="312" id="7cH-zF-U2u"/>
+                            <constraint firstItem="kQ1-Ra-Zek" firstAttribute="centerY" secondItem="Bwk-jd-dCA" secondAttribute="centerY" id="83h-J7-J0v"/>
                             <constraint firstItem="V6M-x5-kpk" firstAttribute="top" secondItem="HdC-a7-VXZ" secondAttribute="bottom" constant="29" id="9Su-J8-dDq"/>
                             <constraint firstItem="00z-F5-HAd" firstAttribute="leading" secondItem="h9A-l2-ghs" secondAttribute="leading" constant="95" id="9y3-g4-a8F"/>
                             <constraint firstItem="nZO-vp-TUk" firstAttribute="centerX" secondItem="9gc-Kd-beV" secondAttribute="centerX" id="BRH-OS-9b3"/>
                             <constraint firstItem="2gR-nn-gi1" firstAttribute="top" secondItem="9gc-Kd-beV" secondAttribute="top" constant="304" id="Cgs-93-PVf"/>
                             <constraint firstItem="nZO-vp-TUk" firstAttribute="top" secondItem="h9A-l2-ghs" secondAttribute="top" constant="84" id="J9U-Wr-2c8"/>
                             <constraint firstItem="uLV-Dt-Sv4" firstAttribute="leading" secondItem="Bwk-jd-dCA" secondAttribute="leading" id="JZk-tg-Mv8"/>
+                            <constraint firstItem="Q7a-qO-Tc8" firstAttribute="top" secondItem="nfV-2N-XyU" secondAttribute="bottom" constant="98.666666666666686" id="MzN-hH-2EP"/>
                             <constraint firstItem="00z-F5-HAd" firstAttribute="centerX" secondItem="9gc-Kd-beV" secondAttribute="centerX" id="NSS-fj-WuD"/>
                             <constraint firstItem="HdC-a7-VXZ" firstAttribute="centerY" secondItem="9gc-Kd-beV" secondAttribute="centerY" constant="-242.5" id="NrY-Wl-Ezu"/>
                             <constraint firstItem="HdC-a7-VXZ" firstAttribute="centerX" secondItem="9gc-Kd-beV" secondAttribute="centerX" id="UK8-3d-EuM"/>
@@ -1205,6 +1206,7 @@
                             <constraint firstItem="kQ1-Ra-Zek" firstAttribute="top" secondItem="dMz-iJ-d0M" secondAttribute="bottom" constant="28" id="kuf-1C-d9q"/>
                             <constraint firstItem="nfV-2N-XyU" firstAttribute="leading" secondItem="dMz-iJ-d0M" secondAttribute="leading" id="lNC-ic-LeU"/>
                             <constraint firstItem="nfV-2N-XyU" firstAttribute="leading" secondItem="2gR-nn-gi1" secondAttribute="leading" id="nez-x2-TSV"/>
+                            <constraint firstItem="h9A-l2-ghs" firstAttribute="bottom" secondItem="Bwk-jd-dCA" secondAttribute="bottom" constant="263" id="ooX-QF-MRs"/>
                             <constraint firstItem="dMz-iJ-d0M" firstAttribute="centerY" secondItem="uLV-Dt-Sv4" secondAttribute="centerY" id="rNK-sr-tPX"/>
                             <constraint firstItem="uLV-Dt-Sv4" firstAttribute="top" secondItem="Q7a-qO-Tc8" secondAttribute="bottom" constant="25" id="rWw-4n-DVR"/>
                             <constraint firstItem="2gR-nn-gi1" firstAttribute="top" secondItem="V6M-x5-kpk" secondAttribute="bottom" constant="30" id="saE-6L-ftj"/>
@@ -1214,7 +1216,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="Jby-6h-I7K"/>
                     <connections>
+                        <outlet property="locRadiusSlider" destination="nfV-2N-XyU" id="d57-NV-b7X"/>
                         <outlet property="usernameField" destination="V6M-x5-kpk" id="Qyo-mv-4pG"/>
+                        <segue destination="H8f-Iq-rFv" kind="presentation" identifier="setupSuccessSegueIdentifier" id="Bsb-1h-MAq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MMG-E3-pc8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1224,7 +1228,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="lCi-BQ-j12"/>
-        <segue reference="ZX5-7f-tbP"/>
+        <segue reference="Bsb-1h-MAq"/>
         <segue reference="sUa-Rb-or3"/>
     </inferredMetricsTieBreakers>
     <resources>
