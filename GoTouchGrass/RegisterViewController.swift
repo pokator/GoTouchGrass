@@ -44,6 +44,9 @@ class RegisterViewController: UIViewController {
                     }
                     //can register
                     self.validRegister = (authResult != nil)
+                    if (authResult != nil) {
+                        self.performSegue(withIdentifier: "registerSuccessSegueID", sender:self)
+                    }
                 }
             }
         }

@@ -41,6 +41,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     self.loginLabel.text = "Invalid login"
                 }
                 self.validLogin = (authResult != nil)
+                if (authResult != nil) {
+                    self.performSegue(withIdentifier: "loginSuccessSegueIdentifier", sender: self)
+                }
             }
             
         } else {
