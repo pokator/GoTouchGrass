@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class SetUpViewController: UIViewController {
     
@@ -16,11 +17,46 @@ class SetUpViewController: UIViewController {
 
     @IBOutlet weak var usernameField: UITextField!
     
+    @IBOutlet weak var locRadiusSlider: UISlider!
+    
+    @Published var newDataText: String = "set up data success"
+    
+    var setLocRad:Float = 0.0
+    var setPref0:Bool = false
+    var setPref1:Bool = false
+    
+    private lazy var databasePath: DatabaseReference? = {
+      // 1
+      guard let uid = Auth.auth().currentUser?.uid else {
+        return nil
+      }
+
+      // 2
+      let ref = Database.database()
+        .reference()
+        .child("users/\(uid)/preferences")
+      return ref
+    }()
+
+    // 3
+    private let encoder = JSONEncoder()
+    private let decoder = JSONDecoder()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setLocRad = locRadiusSlider.value
 
         // Do any additional setup after loading the view.
-        
+        Auth.auth().signIn(withEmail: "test@gmail.com",
+                           password: "test123"){
+            (authResult, error) in
+            if (error as NSError?) != nil {
+                print("Unable to log in")
+            } else {
+                print("Logged in")
+            }
+        }
     }
     
     //  TODO: store preferences
@@ -31,9 +67,53 @@ class SetUpViewController: UIViewController {
             changeRequest?.commitChanges { error in
                 // ...
             }
-            validUsername = true
+            if (changeRequest != nil) {
+                print("Username success")
+                validUsername = true
+                
+                //newDataText = (dataField.text ?? "")
+                // 1
+                guard let databasePath = databasePath else {
+                  return
+                }
+
+                // 2
+                if newDataText.isEmpty {
+                  return
+                }
+
+                // 3
+                let userPrefs = UserPrefsModel(text: newDataText, pref0:setPref0, pref1:setPref1, locRadius:setLocRad )
+
+                do {
+                  // 4
+                  let data = try encoder.encode(userPrefs)
+
+                  // 5
+                  let json = try JSONSerialization.jsonObject(with: data)
+
+                  // 6
+                  databasePath.childByAutoId()
+                    .setValue(json)
+                } catch {
+                  print("an error occurred", error)
+                }
+                performSegue(withIdentifier: "setupSuccessSegueIdentifier", sender: self)
+            }
             Auth.auth().currentUser?.reload()
         }
+    }
+    
+    @IBAction func onLocRadiusChanged(_ sender: Any) {
+        setLocRad = locRadiusSlider.value
+    }
+    
+    @IBAction func onPref1ValChanged(_ sender: Any) {
+        setPref0 = !setPref0
+    }
+    
+    @IBAction func onPref2ValChanged(_ sender: Any) {
+        setPref1 = !setPref1
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {

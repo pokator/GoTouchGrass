@@ -34,8 +34,6 @@ class RegisterViewController: UIViewController {
             let name = emailField.text!
             let pass = passwordField.text!
             if (!name.isEmpty && !pass.isEmpty && (pass == confirmPassField.text)) {
-                //can register
-                validRegister = true
                 Auth.auth().createUser(withEmail: emailField.text!,
                                    password: passwordField.text!) {
                     (authResult, error) in
@@ -43,6 +41,11 @@ class RegisterViewController: UIViewController {
                         self.statusLabel.text = "\(error.localizedDescription)"
                     } else {
                         self.statusLabel.text = ""
+                    }
+                    //can register
+                    self.validRegister = (authResult != nil)
+                    if (authResult != nil) {
+                        self.performSegue(withIdentifier: "registerSuccessSegueID", sender:self)
                     }
                 }
             }

@@ -26,5 +26,7 @@
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
 	<string>1:354194558832:ios:3eea5e4b90d38504c309b5</string>
+	<key>DATABASE_URL</key>
+	<string>https://gotouchgrass-b6585-default-rtdb.firebaseio.com</string>
 </dict>
 </plist>
