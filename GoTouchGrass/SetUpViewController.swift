@@ -12,11 +12,9 @@ import FirebaseDatabase
 class SetUpViewController: UIViewController {
     
     let setupSuccessSegueID = "setupSuccessSegueIdentifier"
-    
     var validUsername : Bool = false
 
     @IBOutlet weak var usernameField: UITextField!
-    
     @IBOutlet weak var locRadiusSlider: UISlider!
     
     @Published var newDataText: String = "set up data success"
@@ -24,6 +22,8 @@ class SetUpViewController: UIViewController {
     var setLocRad:Float = 0.0
     var setPref0:Bool = false
     var setPref1:Bool = false
+    var setRecActivityPref:Bool = false
+    var setShoppingPref:Bool = false
     
     private lazy var databasePath: DatabaseReference? = {
       // 1
@@ -47,7 +47,6 @@ class SetUpViewController: UIViewController {
         
         setLocRad = locRadiusSlider.value
 
-        // Do any additional setup after loading the view.
         Auth.auth().signIn(withEmail: "test@gmail.com",
                            password: "test123"){
             (authResult, error) in
@@ -104,16 +103,29 @@ class SetUpViewController: UIViewController {
         }
     }
     
+    // When a modification is made to the location radius sliders in miles
     @IBAction func onLocRadiusChanged(_ sender: Any) {
         setLocRad = locRadiusSlider.value
     }
     
+    // Setting food activity preference
     @IBAction func onPref1ValChanged(_ sender: Any) {
         setPref0 = !setPref0
     }
     
+    // Setting gym activity preference
     @IBAction func onPref2ValChanged(_ sender: Any) {
         setPref1 = !setPref1
+    }
+    
+    // Setting recreation activities preference
+    @IBAction func onRecActivitiesChanged(_ sender: Any) {
+        setRecActivityPref = !setRecActivityPref
+    }
+    
+    // Setting Shopping activities preference
+    @IBAction func onShoppingValChanged(_ sender: Any) {
+        setShoppingPref = !setShoppingPref
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -135,5 +147,4 @@ class SetUpViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }
