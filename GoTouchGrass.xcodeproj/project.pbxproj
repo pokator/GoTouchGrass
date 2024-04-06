@@ -34,6 +34,8 @@
 		8C53C5962B92826F000BCC29 /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8C53C5952B92826F000BCC29 /* FirebaseAnalyticsSwift */; };
 		8C53C5982B92826F000BCC29 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 8C53C5972B92826F000BCC29 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		8C53C59A2B92826F000BCC29 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 8C53C5992B92826F000BCC29 /* FirebaseAppCheck */; };
+		8CE2F9512BC0AFB1005106AA /* DataDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE2F9502BC0AFB1005106AA /* DataDisplayViewController.swift */; };
+		8CE2F9532BC0C01B005106AA /* MapSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE2F9522BC0C01B005106AA /* MapSettingsViewController.swift */; };
 		8CEEA9242B8D721800698724 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CEEA9232B8D721800698724 /* Media.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +62,8 @@
 		8C3429BB2BA90895000BCC61 /* README.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = README.pdf; sourceTree = "<group>"; };
 		8C53C58E2B928238000BCC29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8C53C59B2B9282E4000BCC29 /* GoTouchGrass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoTouchGrass.entitlements; sourceTree = "<group>"; };
+		8CE2F9502BC0AFB1005106AA /* DataDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDisplayViewController.swift; sourceTree = "<group>"; };
+		8CE2F9522BC0C01B005106AA /* MapSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSettingsViewController.swift; sourceTree = "<group>"; };
 		8CEEA9232B8D721800698724 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -123,8 +127,10 @@
 				4331A08C2B991713003B5151 /* TimerViewController.swift */,
 				210AD3302B8D6A0100D60970 /* Main.storyboard */,
 				892B52832BA67C6500DD6149 /* SetUpViewController.swift */,
+				8CE2F9502BC0AFB1005106AA /* DataDisplayViewController.swift */,
 				892B52812BA52EF200DD6149 /* ProfileSettingsViewController.swift */,
 				892B527D2BA5262900DD6149 /* ProfileViewController.swift */,
+				8CE2F9522BC0C01B005106AA /* MapSettingsViewController.swift */,
 				210AD38B2BA3597000D60970 /* MapViewController.swift */,
 				210AD3362B8D6A0300D60970 /* Assets.xcassets */,
 				210AD3382B8D6A0300D60970 /* LaunchScreen.storyboard */,
@@ -230,11 +236,13 @@
 				0CE39C942BB7808500D32E6B /* UserPrefsModel.swift in Sources */,
 				0CF154FA2B92AD78002E84D0 /* RegisterViewController.swift in Sources */,
 				210AD3352B8D6A0100D60970 /* GoTouchGrass.xcdatamodeld in Sources */,
+				8CE2F9532BC0C01B005106AA /* MapSettingsViewController.swift in Sources */,
 				210AD38C2BA3597000D60970 /* MapViewController.swift in Sources */,
 				4331A08D2B991713003B5151 /* TimerViewController.swift in Sources */,
 				892B52822BA52EF200DD6149 /* ProfileSettingsViewController.swift in Sources */,
 				0CF154F62B92A6DD002E84D0 /* LoginViewController.swift in Sources */,
 				210AD32D2B8D6A0100D60970 /* SceneDelegate.swift in Sources */,
+				8CE2F9512BC0AFB1005106AA /* DataDisplayViewController.swift in Sources */,
 				0CF154F82B92A966002E84D0 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
