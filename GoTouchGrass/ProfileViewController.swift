@@ -12,7 +12,7 @@ class ProfileViewController: UIViewController {
 
     var username : String = ""
     let logoutSegueID = "logOutSegueIdentifier"
-    
+    @IBOutlet weak var dateUserCreated: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     
     override func viewDidLoad() {

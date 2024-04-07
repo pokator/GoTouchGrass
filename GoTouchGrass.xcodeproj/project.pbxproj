@@ -37,6 +37,7 @@
 		8C53C59A2B92826F000BCC29 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 8C53C5992B92826F000BCC29 /* FirebaseAppCheck */; };
 		8CE2F9512BC0AFB1005106AA /* DataDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE2F9502BC0AFB1005106AA /* DataDisplayViewController.swift */; };
 		8CE2F9532BC0C01B005106AA /* MapSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE2F9522BC0C01B005106AA /* MapSettingsViewController.swift */; };
+		8CE2F9552BC1F3A5005106AA /* IndividualDayDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE2F9542BC1F3A5005106AA /* IndividualDayDataViewController.swift */; };
 		8CEEA9242B8D721800698724 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CEEA9232B8D721800698724 /* Media.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		8C53C59B2B9282E4000BCC29 /* GoTouchGrass.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GoTouchGrass.entitlements; sourceTree = "<group>"; };
 		8CE2F9502BC0AFB1005106AA /* DataDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDisplayViewController.swift; sourceTree = "<group>"; };
 		8CE2F9522BC0C01B005106AA /* MapSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSettingsViewController.swift; sourceTree = "<group>"; };
+		8CE2F9542BC1F3A5005106AA /* IndividualDayDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualDayDataViewController.swift; sourceTree = "<group>"; };
 		8CEEA9232B8D721800698724 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +121,7 @@
 				0CE39C932BB7808500D32E6B /* UserPrefsModel.swift */,
 				8C3429BB2BA90895000BCC61 /* README.pdf */,
 				8C53C59B2B9282E4000BCC29 /* GoTouchGrass.entitlements */,
+				8CE2F9542BC1F3A5005106AA /* IndividualDayDataViewController.swift */,
 				8C53C58E2B928238000BCC29 /* GoogleService-Info.plist */,
 				210AD32A2B8D6A0100D60970 /* AppDelegate.swift */,
 				210AD32C2B8D6A0100D60970 /* SceneDelegate.swift */,
@@ -238,6 +241,7 @@
 				892B527E2BA5262A00DD6149 /* ProfileViewController.swift in Sources */,
 				0CE39C942BB7808500D32E6B /* UserPrefsModel.swift in Sources */,
 				0CF154FA2B92AD78002E84D0 /* RegisterViewController.swift in Sources */,
+				8CE2F9552BC1F3A5005106AA /* IndividualDayDataViewController.swift in Sources */,
 				210AD3352B8D6A0100D60970 /* GoTouchGrass.xcdatamodeld in Sources */,
 				8CE2F9532BC0C01B005106AA /* MapSettingsViewController.swift in Sources */,
 				210AD38C2BA3597000D60970 /* MapViewController.swift in Sources */,
