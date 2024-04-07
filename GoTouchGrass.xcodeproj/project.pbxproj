@@ -23,6 +23,7 @@
 		210AD3372B8D6A0300D60970 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 210AD3362B8D6A0300D60970 /* Assets.xcassets */; };
 		210AD33A2B8D6A0300D60970 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 210AD3382B8D6A0300D60970 /* LaunchScreen.storyboard */; };
 		210AD38C2BA3597000D60970 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210AD38B2BA3597000D60970 /* MapViewController.swift */; };
+		21F241562BC2355D004AB173 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 21F241552BC2355D004AB173 /* FirebaseFirestore */; };
 		4331A08D2B991713003B5151 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4331A08C2B991713003B5151 /* TimerViewController.swift */; };
 		892B527E2BA5262A00DD6149 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892B527D2BA5262900DD6149 /* ProfileViewController.swift */; };
 		892B52822BA52EF200DD6149 /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892B52812BA52EF200DD6149 /* ProfileSettingsViewController.swift */; };
@@ -77,6 +78,7 @@
 				0C102B5B2B9A993D0050E7EC /* FirebaseAuth in Frameworks */,
 				8C53C5922B92826F000BCC29 /* FirebaseAnalytics in Frameworks */,
 				8C53C5942B92826F000BCC29 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
+				21F241562BC2355D004AB173 /* FirebaseFirestore in Frameworks */,
 				8C53C59A2B92826F000BCC29 /* FirebaseAppCheck in Frameworks */,
 				0CD79F862BB74F7F00AC423E /* FirebaseDatabase in Frameworks */,
 				8C53C5982B92826F000BCC29 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
@@ -166,6 +168,7 @@
 				0C102B5A2B9A993D0050E7EC /* FirebaseAuth */,
 				0CD79F852BB74F7F00AC423E /* FirebaseDatabase */,
 				0CD79F872BB74F7F00AC423E /* FirebaseDatabaseSwift */,
+				21F241552BC2355D004AB173 /* FirebaseFirestore */,
 			);
 			productName = GoTouchGrass;
 			productReference = 210AD3272B8D6A0100D60970 /* GoTouchGrass.app */;
@@ -501,6 +504,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8C53C5902B92826F000BCC29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabaseSwift;
+		};
+		21F241552BC2355D004AB173 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8C53C5902B92826F000BCC29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 		8C53C5912B92826F000BCC29 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
