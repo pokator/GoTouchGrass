@@ -25,6 +25,8 @@
 		210AD38C2BA3597000D60970 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210AD38B2BA3597000D60970 /* MapViewController.swift */; };
 		21F241562BC2355D004AB173 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 21F241552BC2355D004AB173 /* FirebaseFirestore */; };
 		4331A08D2B991713003B5151 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4331A08C2B991713003B5151 /* TimerViewController.swift */; };
+		43CF3D022BC30D2F00834635 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CF3D012BC30D2F00834635 /* ChecklistItem.swift */; };
+		43CF3D042BC317CD00834635 /* TimerDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CF3D032BC317CD00834635 /* TimerDoneViewController.swift */; };
 		892B527E2BA5262A00DD6149 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892B527D2BA5262900DD6149 /* ProfileViewController.swift */; };
 		892B52822BA52EF200DD6149 /* ProfileSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892B52812BA52EF200DD6149 /* ProfileSettingsViewController.swift */; };
 		892B52842BA67C6500DD6149 /* SetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 892B52832BA67C6500DD6149 /* SetUpViewController.swift */; };
@@ -58,6 +60,8 @@
 		210AD33B2B8D6A0300D60970 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		210AD38B2BA3597000D60970 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4331A08C2B991713003B5151 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
+		43CF3D012BC30D2F00834635 /* ChecklistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistItem.swift; sourceTree = "<group>"; };
+		43CF3D032BC317CD00834635 /* TimerDoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDoneViewController.swift; sourceTree = "<group>"; };
 		892B527D2BA5262900DD6149 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		892B52812BA52EF200DD6149 /* ProfileSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSettingsViewController.swift; sourceTree = "<group>"; };
 		892B52832BA67C6500DD6149 /* SetUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetUpViewController.swift; sourceTree = "<group>"; };
@@ -129,7 +133,9 @@
 				0CF154F92B92AD78002E84D0 /* RegisterViewController.swift */,
 				0CF154F52B92A6DD002E84D0 /* LoginViewController.swift */,
 				0CF154F72B92A966002E84D0 /* HomeViewController.swift */,
+				43CF3D012BC30D2F00834635 /* ChecklistItem.swift */,
 				4331A08C2B991713003B5151 /* TimerViewController.swift */,
+				43CF3D032BC317CD00834635 /* TimerDoneViewController.swift */,
 				210AD3302B8D6A0100D60970 /* Main.storyboard */,
 				892B52832BA67C6500DD6149 /* SetUpViewController.swift */,
 				8CE2F9502BC0AFB1005106AA /* DataDisplayViewController.swift */,
@@ -243,6 +249,7 @@
 				0CF154FA2B92AD78002E84D0 /* RegisterViewController.swift in Sources */,
 				8CE2F9552BC1F3A5005106AA /* IndividualDayDataViewController.swift in Sources */,
 				210AD3352B8D6A0100D60970 /* GoTouchGrass.xcdatamodeld in Sources */,
+				43CF3D042BC317CD00834635 /* TimerDoneViewController.swift in Sources */,
 				8CE2F9532BC0C01B005106AA /* MapSettingsViewController.swift in Sources */,
 				210AD38C2BA3597000D60970 /* MapViewController.swift in Sources */,
 				4331A08D2B991713003B5151 /* TimerViewController.swift in Sources */,
@@ -250,6 +257,7 @@
 				0CF154F62B92A6DD002E84D0 /* LoginViewController.swift in Sources */,
 				210AD32D2B8D6A0100D60970 /* SceneDelegate.swift in Sources */,
 				8CE2F9512BC0AFB1005106AA /* DataDisplayViewController.swift in Sources */,
+				43CF3D022BC30D2F00834635 /* ChecklistItem.swift in Sources */,
 				0CF154F82B92A966002E84D0 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

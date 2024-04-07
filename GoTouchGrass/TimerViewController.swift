@@ -8,15 +8,20 @@
 import UIKit
 import UserNotifications
 
-class TimerViewController: UIViewController, UNUserNotificationCenterDelegate{
-
+class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, UITableViewDelegate, UITableViewDataSource{
+    
     @IBOutlet weak var timerText: UILabel!
     @IBOutlet weak var timerSlider: UISlider!
     @IBOutlet weak var startResetButton: UIButton!
     
+    @IBOutlet weak var tableView: UITableView!
+    var checkList = [ChecklistItem]()
+    var checkedNum = 0
+    
     var timerDoneSegue = "Timer"
     
     var timer:Timer = Timer()
+    var timeStart = 0
     var count:Int = 5
     var timerCounting:Bool = false
     
@@ -34,6 +39,8 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate{
         startResetButton.setTitleColor(UIColor.green, for: .normal)
         timerText.text = makeTimeString(minutes: 0, seconds: 5)
         
+        tableView.delegate = self
+        tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
 
@@ -61,6 +68,7 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate{
             timerCounting = true
             startResetButton.setTitle("RESET", for: .normal)
             startResetButton.setTitleColor(UIColor.red, for: .normal)
+            timeStart = count
             timerSlider.isEnabled = false
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerCounter), userInfo: nil, repeats: true)
         }
@@ -70,10 +78,79 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate{
     // Segue for timer finishing!
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == timerDoneSegue,
-        let destination = segue.destination as? HomeViewController { // TODO CHANGE HOME VIEW CONTROLLER TO DONE TIMER SCREEN
-            // prep here
+        let destination = segue.destination as? TimerDoneViewController { 
+            destination.checkList = checkList
+            destination.timeDone = timeStart
+            destination.delegate = self
         }
     }
+    
+    // MARK: - CheckList schenanigans
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = checkList[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = item.title
+        
+        cell.accessoryType = item.isChecked ? .checkmark : .none
+        cell.backgroundColor = item.isChecked ? UIColor.lightGray : UIColor.white
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return checkList.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let task = checkList[indexPath.row]
+        task.isChecked = !task.isChecked
+        checkList.remove(at: indexPath.row)
+        
+        // if it is checked, go to bottom of list
+        if task.isChecked {
+            checkedNum += 1
+            checkList.append(task)
+        } else { // if unchecked, move back to top
+            checkedNum -= 1
+            checkList.insert(task, at: checkList.count - self.checkedNum)
+        }
+        
+        
+        tableView.reloadData()
+    }
+    
+    @IBAction func addTaskPressed(_ sender: Any) {
+        let alert = UIAlertController(title: "Add Item", message: "Enter task:", preferredStyle: .alert)
+                
+        // Add a text field to the alert
+        alert.addTextField { textField in
+            textField.placeholder = "Enter text"
+        }
+        
+        // Add actions to the alert
+        let addAction = UIAlertAction(title: "Add", style: .default) { [weak self] _ in
+            guard let text = alert.textFields?.first?.text else { return }
+            self?.checkList.insert((ChecklistItem(title: text)), at: (self!.checkList.count - self!.checkedNum))
+            self?.tableView.reloadData()
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        // Add actions to the alert
+        alert.addAction(addAction)
+        alert.addAction(cancelAction)
+                
+        // Present the alert
+        present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func clearListPressed(_ sender: Any) {
+        checkList = []
+        tableView.reloadData()
+    }
+    
+    
     
     // MARK: - Timer schenanigans
     
