@@ -6,11 +6,30 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
 
 class TimerDoneViewController: UIViewController {
 
+    private lazy var databasePath: DatabaseReference? = {
+      // 1
+      guard let uid = Auth.auth().currentUser?.uid else {
+        return nil
+      }
+
+      // 2
+      let ref = Database.database()
+        .reference()
+        .child("users/\(uid)/preferences")
+      return ref
+    }()
+
+    // 3
+    private let encoder = JSONEncoder()
+    private let decoder = JSONDecoder()
+    
     var checkList = [ChecklistItem]()
-    var timeDone = 0
+    //var timeDone = 0
     var delegate: UIViewController!
     
     @IBOutlet weak var currentTimeLabel: UILabel!
@@ -20,16 +39,43 @@ class TimerDoneViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        currentTimeLabel.text = "\(timeDone / 60) minutes spent focused!"
-        totalTimeLabel.text = totalTimeCalc()
-        taskCompletionLabel.text = "\(numTasksDone()) out of \(checkList.count) tasks completed!"
         
-        if numTasksDone() == checkList.count {
-            congratsText.text = "Well done! You got all your tasks done!"
-        } else {
-            congratsText.text = ""
-        }
+        // 2
+        databasePath?
+            .observe(.value) { [weak self] snapshot,error  in
+
+            // 3
+            guard
+              let self = self,
+              var json = snapshot.value as? [String: Any]
+            else {
+              return
+            }
+
+            // 4
+            json["id"] = snapshot.key
+    
+            do {
+                // 5
+                let thoughtData = try JSONSerialization.data(withJSONObject: json)
+                // 6
+                let prefs = try self.decoder.decode(UserPrefsModel.self, from: thoughtData)
+            
+                // 7
+                currentTimeLabel.text = "\(prefs.timeDone / 60) minutes spent focused!"
+                totalTimeLabel.text = totalTimeCalc(timeDone:prefs.timeDone)
+                taskCompletionLabel.text = "\(numTasksDone()) out of \(checkList.count) tasks completed!"
+                
+                if numTasksDone() == checkList.count {
+                    congratsText.text = "Well done! You got all your tasks done!"
+                } else {
+                    congratsText.text = ""
+                }
+            } catch {
+              print("an error occurred", error)
+            }
+          }
+        
         
         // Do any additional setup after loading the view.
     }
@@ -46,9 +92,11 @@ class TimerDoneViewController: UIViewController {
         return count
     }
     
-    func totalTimeCalc() -> String {
+    func totalTimeCalc(timeDone:Int) -> String {
         
         // TODO : need to update timeDone to use coredata of total time
+        print("Time done retrieved: ", timeDone)
+        
         let seconds = timeDone
         let minutes = Float(timeDone / 60)
         let hours = minutes / 60

@@ -9,10 +9,16 @@ import Foundation
 
 struct UserPrefsModel: Identifiable, Codable {
     var id: String?
-    var text: String
+    var username: String
     
-    var pref0:Bool
-    var pref1:Bool
+    var prefFood:Bool
+    var prefGym:Bool
+    var prefRec:Bool
+    var prefShop:Bool
+    
+    var timeDone:Int
+    var totalTime:Int
+    var taskNum:Int
     
     var locRadius:Float
 }

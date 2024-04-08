@@ -64,7 +64,7 @@ class DatabaseViewController: UIViewController {
         }
 
         // 3
-        let userPrefs = UserPrefsModel(text: newDataText, pref0:false, pref1:false, locRadius:0.0 )
+        let userPrefs = UserPrefsModel(username: "", prefFood: false, prefGym: false, prefRec: false, prefShop: false, timeDone:0, totalTime: 0, taskNum: 0, locRadius: 0.0)
 
         do {
           // 4
@@ -110,7 +110,7 @@ class DatabaseViewController: UIViewController {
               // 6
               let prefs = try self.decoder.decode(UserPrefsModel.self, from: thoughtData)
               // 7
-                self.dataLabel.text = prefs.text
+                self.dataLabel.text = prefs.username
             } catch {
               print("an error occurred", error)
             }

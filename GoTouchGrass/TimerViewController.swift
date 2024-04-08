@@ -7,8 +7,27 @@
 
 import UIKit
 import UserNotifications
+import FirebaseAuth
+import FirebaseDatabase
 
 class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, UITableViewDelegate, UITableViewDataSource{
+    
+    private lazy var databasePath: DatabaseReference? = {
+      // 1
+      guard let uid = Auth.auth().currentUser?.uid else {
+        return nil
+      }
+
+      // 2
+      let ref = Database.database()
+        .reference()
+        .child("users/\(uid)/preferences")
+      return ref
+    }()
+
+    // 3
+    private let encoder = JSONEncoder()
+    private let decoder = JSONDecoder()
     
     @IBOutlet weak var timerText: UILabel!
     @IBOutlet weak var timerSlider: UISlider!
@@ -78,9 +97,22 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
     // Segue for timer finishing!
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == timerDoneSegue,
-        let destination = segue.destination as? TimerDoneViewController { 
+        let destination = segue.destination as? TimerDoneViewController {
+            
+            let uid = Auth.auth().currentUser?.uid
+            
+            let post = ["timeDone": timeStart]
+            
+            // 1
+            guard let databasePath = databasePath else {
+                return
+            }
+            
+            print("trying to update")
+            databasePath.updateChildValues(post)
+            
             destination.checkList = checkList
-            destination.timeDone = timeStart
+           // destination.timeDone = timeStart
             destination.delegate = self
         }
     }

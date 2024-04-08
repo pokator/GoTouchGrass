@@ -22,6 +22,9 @@ class SetUpViewController: UIViewController {
     var setLocRad:Float = 0.0
     var setPref0:Bool = false
     var setPref1:Bool = false
+    var setPref2:Bool = false
+    var setPref3:Bool = false
+    
     var setRecActivityPref:Bool = false
     var setShoppingPref:Bool = false
     
@@ -46,16 +49,17 @@ class SetUpViewController: UIViewController {
         super.viewDidLoad()
         
         setLocRad = locRadiusSlider.value
-
-        Auth.auth().signIn(withEmail: "test@gmail.com",
-                           password: "test123"){
-            (authResult, error) in
-            if (error as NSError?) != nil {
-                print("Unable to log in")
-            } else {
-                print("Logged in")
-            }
-        }
+        
+// debug login for faster database testing
+//        Auth.auth().signIn(withEmail: "test@gmail.com",
+//                           password: "test123"){
+//            (authResult, error) in
+//            if (error as NSError?) != nil {
+//                print("Unable to log in")
+//            } else {
+//                print("Logged in")
+//            }
+//        }
     }
     
     //  TODO: store preferences
@@ -82,7 +86,7 @@ class SetUpViewController: UIViewController {
                 }
 
                 // 3
-                let userPrefs = UserPrefsModel(text: newDataText, pref0:setPref0, pref1:setPref1, locRadius:setLocRad )
+                let userPrefs = UserPrefsModel(username: usernameField.text ?? "", prefFood:setPref0, prefGym:setPref1, prefRec:setPref2, prefShop:setPref3, timeDone:5, totalTime:0, taskNum:0, locRadius:setLocRad)
 
                 do {
                   // 4
@@ -91,9 +95,12 @@ class SetUpViewController: UIViewController {
                   // 5
                   let json = try JSONSerialization.jsonObject(with: data)
 
-                  // 6
-                  databasePath.childByAutoId()
-                    .setValue(json)
+//                  // 6
+//                  databasePath.childByAutoId()
+//                    .setValue(json)
+                    
+                    databasePath.updateChildValues(json as! [AnyHashable : Any])
+
                 } catch {
                   print("an error occurred", error)
                 }
@@ -109,23 +116,23 @@ class SetUpViewController: UIViewController {
     }
     
     // Setting food activity preference
-    @IBAction func onPref1ValChanged(_ sender: Any) {
+    @IBAction func onPref0ValChanged(_ sender: Any) {
         setPref0 = !setPref0
     }
     
     // Setting gym activity preference
-    @IBAction func onPref2ValChanged(_ sender: Any) {
+    @IBAction func onPref1ValChanged(_ sender: Any) {
         setPref1 = !setPref1
     }
     
-    // Setting recreation activities preference
-    @IBAction func onRecActivitiesChanged(_ sender: Any) {
-        setRecActivityPref = !setRecActivityPref
+    // Setting rec activity preference
+    @IBAction func onPref2ValChanged(_ sender: Any) {
+        setPref0 = !setPref2
     }
     
-    // Setting Shopping activities preference
-    @IBAction func onShoppingValChanged(_ sender: Any) {
-        setShoppingPref = !setShoppingPref
+    // Setting shopping activity preference
+    @IBAction func onPref3ValChanged(_ sender: Any) {
+        setPref1 = !setPref3
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
