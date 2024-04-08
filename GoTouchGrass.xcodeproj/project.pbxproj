@@ -40,6 +40,8 @@
 		8CE2F9512BC0AFB1005106AA /* DataDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE2F9502BC0AFB1005106AA /* DataDisplayViewController.swift */; };
 		8CE2F9532BC0C01B005106AA /* MapSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE2F9522BC0C01B005106AA /* MapSettingsViewController.swift */; };
 		8CE2F9552BC1F3A5005106AA /* IndividualDayDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE2F9542BC1F3A5005106AA /* IndividualDayDataViewController.swift */; };
+		8CE2F9572BC3460A005106AA /* CalenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE2F9562BC3460A005106AA /* CalenderCell.swift */; };
+		8CE2F9592BC357FB005106AA /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE2F9582BC357FB005106AA /* CalendarHelper.swift */; };
 		8CEEA9242B8D721800698724 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CEEA9232B8D721800698724 /* Media.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +73,8 @@
 		8CE2F9502BC0AFB1005106AA /* DataDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataDisplayViewController.swift; sourceTree = "<group>"; };
 		8CE2F9522BC0C01B005106AA /* MapSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSettingsViewController.swift; sourceTree = "<group>"; };
 		8CE2F9542BC1F3A5005106AA /* IndividualDayDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndividualDayDataViewController.swift; sourceTree = "<group>"; };
+		8CE2F9562BC3460A005106AA /* CalenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalenderCell.swift; sourceTree = "<group>"; };
+		8CE2F9582BC357FB005106AA /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		8CEEA9232B8D721800698724 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Media.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,10 +137,12 @@
 				0CF154F92B92AD78002E84D0 /* RegisterViewController.swift */,
 				0CF154F52B92A6DD002E84D0 /* LoginViewController.swift */,
 				0CF154F72B92A966002E84D0 /* HomeViewController.swift */,
+				8CE2F9562BC3460A005106AA /* CalenderCell.swift */,
 				43CF3D012BC30D2F00834635 /* ChecklistItem.swift */,
 				4331A08C2B991713003B5151 /* TimerViewController.swift */,
 				43CF3D032BC317CD00834635 /* TimerDoneViewController.swift */,
 				210AD3302B8D6A0100D60970 /* Main.storyboard */,
+				8CE2F9582BC357FB005106AA /* CalendarHelper.swift */,
 				892B52832BA67C6500DD6149 /* SetUpViewController.swift */,
 				8CE2F9502BC0AFB1005106AA /* DataDisplayViewController.swift */,
 				892B52812BA52EF200DD6149 /* ProfileSettingsViewController.swift */,
@@ -247,11 +253,13 @@
 				892B527E2BA5262A00DD6149 /* ProfileViewController.swift in Sources */,
 				0CE39C942BB7808500D32E6B /* UserPrefsModel.swift in Sources */,
 				0CF154FA2B92AD78002E84D0 /* RegisterViewController.swift in Sources */,
+				8CE2F9572BC3460A005106AA /* CalenderCell.swift in Sources */,
 				8CE2F9552BC1F3A5005106AA /* IndividualDayDataViewController.swift in Sources */,
 				210AD3352B8D6A0100D60970 /* GoTouchGrass.xcdatamodeld in Sources */,
 				43CF3D042BC317CD00834635 /* TimerDoneViewController.swift in Sources */,
 				8CE2F9532BC0C01B005106AA /* MapSettingsViewController.swift in Sources */,
 				210AD38C2BA3597000D60970 /* MapViewController.swift in Sources */,
+				8CE2F9592BC357FB005106AA /* CalendarHelper.swift in Sources */,
 				4331A08D2B991713003B5151 /* TimerViewController.swift in Sources */,
 				892B52822BA52EF200DD6149 /* ProfileSettingsViewController.swift in Sources */,
 				0CF154F62B92A6DD002E84D0 /* LoginViewController.swift in Sources */,
