@@ -45,16 +45,6 @@ class MapSettingsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        Auth.auth().signIn(withEmail: "test@gmail.com",
-                           password: "test123"){
-            (authResult, error) in
-            if let error = error as NSError? {
-                print("Unable to log in")
-            } else {
-                print("Logged in")
-            }
-        }
-        
         // 2
         databasePath?
             .observe(.value) { [weak self] snapshot,error  in
