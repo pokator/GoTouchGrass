@@ -44,6 +44,7 @@ class MapSettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Do any additional setup after loading the view.
         // 2
         databasePath?
             .observe(.value) { [weak self] snapshot,error  in
