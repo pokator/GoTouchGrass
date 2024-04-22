@@ -8,9 +8,9 @@
 import UIKit
 
 class Recommendation {
-    var name:String = "small"
-    var type:String = "thin crust"
-    var location:String = "regular cheese"
+    var name:String = "recName"
+    var type:String = "typeName"
+    var location:String = "locName"
 }
 
 var recList:[Recommendation] = []

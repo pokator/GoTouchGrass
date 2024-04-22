@@ -15,6 +15,7 @@ class MapSettingsViewController: UIViewController {
     
     @IBOutlet weak var foodSwitch: UISwitch!
     @IBOutlet weak var gymSwitch: UISwitch!
+    @IBOutlet weak var parkSwitch: UISwitch!
     @IBOutlet weak var recSwitch: UISwitch!
     @IBOutlet weak var shopSwitch: UISwitch!
     
@@ -23,6 +24,7 @@ class MapSettingsViewController: UIViewController {
     var setPref1:Bool = false
     var setPref2:Bool = false
     var setPref3:Bool = false
+    var setPref4:Bool = false
     
     private lazy var databasePath: DatabaseReference? = {
       // 1
@@ -43,50 +45,21 @@ class MapSettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        // 2
-        databasePath?
-            .observe(.value) { [weak self] snapshot,error  in
-
-            // 3
-            guard
-              let self = self,
-              var json = snapshot.value as? [String: Any]
-            else {
-              return
-            }
-
-            // 4
-            json["id"] = snapshot.key
-    
-                do {
-                    // 5
-                    let thoughtData = try JSONSerialization.data(withJSONObject: json)
-                    // 6
-                    let prefs = try self.decoder.decode(UserPrefsModel.self, from: thoughtData)
-                    
-                    locRadiusSlider.value = prefs.locRadius
-                    foodSwitch.isOn = prefs.prefFood
-                    gymSwitch.isOn = prefs.prefGym
-                    recSwitch.isOn = prefs.prefRec
-                    shopSwitch.isOn = prefs.prefShop
-                    
-                } catch {
-                  print("an error occurred", error)
-                }
-              }
+        
         if (foodSwitch.isOn) {
-            setPref0 = true
-        } 
+            setPref0 = defaults.bool(forKey: "prefFood")
+        }
         if (gymSwitch.isOn) {
-            setPref1 = true
-        } 
-        if (recSwitch.isOn) {
-            setPref2 = true
-        } 
+            setPref1 = defaults.bool(forKey: "prefGym")
+        }
+        if (parkSwitch.isOn) {
+            setPref2 = defaults.bool(forKey: "prefParks")
+        }
         if (shopSwitch.isOn) {
-            setPref3 = true
+            setPref3 = defaults.bool(forKey: "prefRec")
+        }
+        if (shopSwitch.isOn) {
+            setPref4 = defaults.bool(forKey: "prefShop")
         }
         setLocRad = locRadiusSlider.value
         // Do any additional setup after loading the view.
@@ -103,6 +76,13 @@ class MapSettingsViewController: UIViewController {
         // 3
         let updatePrefs = ["prefFood":setPref0, "prefGym":setPref1, "prefRec":setPref2, "prefShop":setPref3, "locRadius":setLocRad] as [String : Any]
             databasePath.updateChildValues(updatePrefs)
+        
+        defaults.set(setPref0, forKey: "prefFood")
+        defaults.set(setPref1, forKey: "prefGym")
+        defaults.set(setPref2, forKey: "prefParks")
+        defaults.set(setPref3, forKey: "prefRec")
+        defaults.set(setPref4, forKey: "prefShop")
+        defaults.set(setLocRad, forKey: "locRadius")
     }
     
     // When a modification is made to the location radius sliders in miles
@@ -129,6 +109,11 @@ class MapSettingsViewController: UIViewController {
     // Setting shopping activity preference
     @IBAction func onPref3ValChanged(_ sender: Any) {
         setPref3 = !setPref3
+    }
+    
+    // Setting shopping activity preference
+    @IBAction func onPref4ValChanged(_ sender: Any) {
+        setPref3 = !setPref4
     }
     
     

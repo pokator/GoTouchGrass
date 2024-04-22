@@ -29,7 +29,7 @@ class TimerDoneViewController: UIViewController {
     private let decoder = JSONDecoder()
     
     var checkList = [ChecklistItem]()
-    //var timeDone = 0
+    var timeDone = 0
     var delegate: UIViewController!
     
     @IBOutlet weak var currentTimeLabel: UILabel!
@@ -75,8 +75,8 @@ class TimerDoneViewController: UIViewController {
               print("an error occurred", error)
             }
           }
-        
-        
+        currentTimeLabel.text = String(Float(timeDone / 60)) + " minutes"
+        totalTimeLabel.text = totalTimeCalc(timeDone: timeDone)
         // Do any additional setup after loading the view.
     }
     
@@ -88,7 +88,6 @@ class TimerDoneViewController: UIViewController {
                 count += 1
             }
         }
-        
         return count
     }
     
@@ -109,8 +108,6 @@ class TimerDoneViewController: UIViewController {
         let statsText = "\(seconds) seconds \n\n \(minutesString) minutes \n\n \(hoursString) hours\n\n \(daysString) days"
         
         return statsText
-        
-        
     }
 
     /*
