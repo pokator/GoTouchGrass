@@ -64,7 +64,7 @@ class DatabaseViewController: UIViewController {
         }
 
         // 3
-        let userPrefs = UserPrefsModel(username: "", prefFood: false, prefGym: false, prefRec: false, prefShop: false, timeDone:0, totalTime: 0, taskNum: 0, locRadius: 0.0)
+        let userPrefs = UserPrefsModel(username: "", prefFood: false, prefGym: false, prefParks: false, prefRec: false, prefShop: false, timeDone:0, totalTime: 0, taskNum: 0, locRadius: 0.0)
 
         do {
           // 4

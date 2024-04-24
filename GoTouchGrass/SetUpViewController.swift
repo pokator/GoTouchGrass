@@ -9,6 +9,8 @@ import UIKit
 import FirebaseAuth
 import FirebaseDatabase
 
+let defaults = UserDefaults.standard
+
 class SetUpViewController: UIViewController {
     
     let setupSuccessSegueID = "setupSuccessSegueIdentifier"
@@ -24,6 +26,7 @@ class SetUpViewController: UIViewController {
     var setPref1:Bool = false
     var setPref2:Bool = false
     var setPref3:Bool = false
+    var setPref4:Bool = false
     
     var setRecActivityPref:Bool = false
     var setShoppingPref:Bool = false
@@ -72,8 +75,13 @@ class SetUpViewController: UIViewController {
             }
             if (changeRequest != nil) {
                 print("Username success")
-                validUsername = true
-                
+                defaults.set(setPref0, forKey: "prefFood")
+                defaults.set(setPref1, forKey: "prefGym")
+                defaults.set(setPref2, forKey: "prefParks")
+                defaults.set(setPref3, forKey: "prefRec")
+                defaults.set(setPref4, forKey: "prefShop")
+                defaults.set(setLocRad, forKey: "locRadius")
+                print(defaults.dictionaryRepresentation())
                 //newDataText = (dataField.text ?? "")
                 // 1
                 guard let databasePath = databasePath else {
@@ -86,7 +94,7 @@ class SetUpViewController: UIViewController {
                 }
 
                 // 3
-                let userPrefs = UserPrefsModel(username: usernameField.text ?? "", prefFood:setPref0, prefGym:setPref1, prefRec:setPref2, prefShop:setPref3, timeDone:5, totalTime:0, taskNum:0, locRadius:setLocRad)
+                let userPrefs = UserPrefsModel(username: usernameField.text ?? "", prefFood:setPref0, prefGym:setPref1, prefParks:setPref2, prefRec:setPref3, prefShop:setPref4, timeDone:5, totalTime:0, taskNum:0, locRadius:setLocRad)
 
                 do {
                   // 4
@@ -107,6 +115,14 @@ class SetUpViewController: UIViewController {
                 performSegue(withIdentifier: "setupSuccessSegueIdentifier", sender: self)
             }
             Auth.auth().currentUser?.reload()
+        } else {
+            let controller = UIAlertController(
+                title: "Missing username",
+                message: "Please provide a valid username.",
+                preferredStyle: .alert)
+            
+            controller.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(controller,animated: true)
         }
     }
     
@@ -133,16 +149,6 @@ class SetUpViewController: UIViewController {
     // Setting shopping activity preference
     @IBAction func onPref3ValChanged(_ sender: Any) {
         setPref1 = !setPref3
-    }
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == setupSuccessSegueID {
-            if validUsername {
-                return true
-            }
-            return false
-        }
-        return true
     }
     
     /*

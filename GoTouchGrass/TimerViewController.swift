@@ -98,21 +98,8 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == timerDoneSegue,
         let destination = segue.destination as? TimerDoneViewController {
-            
-            let uid = Auth.auth().currentUser?.uid
-            
-            let post = ["timeDone": timeStart]
-            
-            // 1
-            guard let databasePath = databasePath else {
-                return
-            }
-            
-            print("trying to update")
-            databasePath.updateChildValues(post)
-            
             destination.checkList = checkList
-           // destination.timeDone = timeStart
+            destination.timeDone = timeStart
             destination.delegate = self
         }
     }

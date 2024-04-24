@@ -17,8 +17,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     let loginSegueID = "loginSuccessSegueIdentifier"
     let registerSegueID = "registerSegueIdentifier"
     
-    var validLogin = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -31,23 +29,30 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let name = userIDField.text!
         let pass = passwordField.text!
         if (!name.isEmpty && !pass.isEmpty) {
-            self.loginLabel.text = "Valid login"
             Auth.auth().signIn(withEmail: name,
                                password: pass){
                 (authResult, error) in
                 if let error = error as NSError? {
-                    self.loginLabel.text = "\(error.localizedDescription)"
-                } else {
-                    self.loginLabel.text = "Invalid login"
-                }
-                self.validLogin = (authResult != nil)
+                    let controller = UIAlertController(
+                        title: "Login error",
+                        message: "\(error.localizedDescription)",
+                        preferredStyle: .alert)
+                    
+                    controller.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(controller,animated: true)
+                }                 
                 if (authResult != nil) {
                     self.performSegue(withIdentifier: "loginSuccessSegueIdentifier", sender: self)
                 }
             }
-            
         } else {
-            loginLabel.text = "Invalid login"
+            let controller = UIAlertController(
+                title: "Missing email or password",
+                message: "Please provide a valid email and password.",
+                preferredStyle: .alert)
+            
+            controller.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(controller,animated: true)
         }
     }
 
@@ -60,16 +65,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // Called when the user clicks on the view outside of the UITextField
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-    }
-    
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == loginSegueID {
-            if validLogin {
-                return true
-            }
-            return false
-        }
-        return true
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

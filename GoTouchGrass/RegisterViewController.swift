@@ -20,8 +20,6 @@ class RegisterViewController: UIViewController {
     
     @IBOutlet weak var statusLabel: UILabel!
     
-    var validRegister = false
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         passwordField.isSecureTextEntry = true
@@ -38,28 +36,29 @@ class RegisterViewController: UIViewController {
                                    password: passwordField.text!) {
                     (authResult, error) in
                     if let error = error as NSError? {
-                        self.statusLabel.text = "\(error.localizedDescription)"
-                    } else {
-                        self.statusLabel.text = ""
+                        let controller = UIAlertController(
+                            title: "Registration error",
+                            message: "\(error.localizedDescription)",
+                            preferredStyle: .alert)
+                        
+                        controller.addAction(UIAlertAction(title: "OK", style: .default))
+                        self.present(controller,animated: true)
                     }
                     //can register
-                    self.validRegister = (authResult != nil)
                     if (authResult != nil) {
                         self.performSegue(withIdentifier: "registerSuccessSegueID", sender:self)
                     }
                 }
             }
+        } else {
+            let controller = UIAlertController(
+                title: "Missing email or password",
+                message: "Please provide a valid email and password.",
+                preferredStyle: .alert)
+            
+            controller.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(controller,animated: true)
         }
-    }
-
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if identifier == registerSuccessSegueID {
-            if validRegister {
-                return true
-            }
-            return false
-        }
-        return true
     }
     
     /*
