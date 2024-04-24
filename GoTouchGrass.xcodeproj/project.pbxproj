@@ -25,6 +25,8 @@
 		210AD3372B8D6A0300D60970 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 210AD3362B8D6A0300D60970 /* Assets.xcassets */; };
 		210AD33A2B8D6A0300D60970 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 210AD3382B8D6A0300D60970 /* LaunchScreen.storyboard */; };
 		210AD38C2BA3597000D60970 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 210AD38B2BA3597000D60970 /* MapViewController.swift */; };
+		214DB28F2BD9B11F0061B053 /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 214DB28E2BD9B11F0061B053 /* DGCharts */; };
+		214DB2912BD9B11F0061B053 /* DGChartsDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 214DB2902BD9B11F0061B053 /* DGChartsDynamic */; };
 		21F241562BC2355D004AB173 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 21F241552BC2355D004AB173 /* FirebaseFirestore */; };
 		4331A08D2B991713003B5151 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4331A08C2B991713003B5151 /* TimerViewController.swift */; };
 		43CF3D022BC30D2F00834635 /* ChecklistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43CF3D012BC30D2F00834635 /* ChecklistItem.swift */; };
@@ -89,6 +91,8 @@
 			files = (
 				0CD79F882BB74F7F00AC423E /* FirebaseDatabaseSwift in Frameworks */,
 				8C53C5962B92826F000BCC29 /* FirebaseAnalyticsSwift in Frameworks */,
+				214DB2912BD9B11F0061B053 /* DGChartsDynamic in Frameworks */,
+				214DB28F2BD9B11F0061B053 /* DGCharts in Frameworks */,
 				0C102B5B2B9A993D0050E7EC /* FirebaseAuth in Frameworks */,
 				8C53C5922B92826F000BCC29 /* FirebaseAnalytics in Frameworks */,
 				8C53C5942B92826F000BCC29 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
@@ -190,6 +194,8 @@
 				0CD79F852BB74F7F00AC423E /* FirebaseDatabase */,
 				0CD79F872BB74F7F00AC423E /* FirebaseDatabaseSwift */,
 				21F241552BC2355D004AB173 /* FirebaseFirestore */,
+				214DB28E2BD9B11F0061B053 /* DGCharts */,
+				214DB2902BD9B11F0061B053 /* DGChartsDynamic */,
 			);
 			productName = GoTouchGrass;
 			productReference = 210AD3272B8D6A0100D60970 /* GoTouchGrass.app */;
@@ -221,6 +227,7 @@
 			mainGroup = 210AD31E2B8D6A0100D60970;
 			packageReferences = (
 				8C53C5902B92826F000BCC29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				214DB28D2BD9B11F0061B053 /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 210AD3282B8D6A0100D60970 /* Products */;
 			projectDirPath = "";
@@ -507,6 +514,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		214DB28D2BD9B11F0061B053 /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.1.0;
+			};
+		};
 		8C53C5902B92826F000BCC29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -532,6 +547,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8C53C5902B92826F000BCC29 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseDatabaseSwift;
+		};
+		214DB28E2BD9B11F0061B053 /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 214DB28D2BD9B11F0061B053 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
+		};
+		214DB2902BD9B11F0061B053 /* DGChartsDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 214DB28D2BD9B11F0061B053 /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGChartsDynamic;
 		};
 		21F241552BC2355D004AB173 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
