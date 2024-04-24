@@ -13,6 +13,7 @@ struct UserPrefsModel: Identifiable, Codable {
     
     var prefFood:Bool
     var prefGym:Bool
+    var prefParks:Bool
     var prefRec:Bool
     var prefShop:Bool
     

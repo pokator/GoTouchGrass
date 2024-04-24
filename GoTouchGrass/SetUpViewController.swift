@@ -94,7 +94,7 @@ class SetUpViewController: UIViewController {
                 }
 
                 // 3
-                let userPrefs = UserPrefsModel(username: usernameField.text ?? "", prefFood:setPref0, prefGym:setPref1, prefRec:setPref2, prefShop:setPref3, timeDone:5, totalTime:0, taskNum:0, locRadius:setLocRad)
+                let userPrefs = UserPrefsModel(username: usernameField.text ?? "", prefFood:setPref0, prefGym:setPref1, prefParks:setPref2, prefRec:setPref3, prefShop:setPref4, timeDone:5, totalTime:0, taskNum:0, locRadius:setLocRad)
 
                 do {
                   // 4
