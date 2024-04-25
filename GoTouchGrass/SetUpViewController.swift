@@ -17,6 +17,7 @@ class SetUpViewController: UIViewController {
     var validUsername : Bool = false
 
     @IBOutlet weak var usernameField: UITextField!
+    @IBOutlet weak var radiusLabel: UILabel!
     @IBOutlet weak var locRadiusSlider: UISlider!
     
     @Published var newDataText: String = "set up data success"
@@ -129,6 +130,7 @@ class SetUpViewController: UIViewController {
     // When a modification is made to the location radius sliders in miles
     @IBAction func onLocRadiusChanged(_ sender: Any) {
         setLocRad = locRadiusSlider.value
+        radiusLabel.text = "Location radius: " + String(setLocRad) + " mi"
     }
     
     // Setting food activity preference

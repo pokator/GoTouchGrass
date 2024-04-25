@@ -11,6 +11,7 @@ import FirebaseDatabase
 
 class MapSettingsViewController: UIViewController {
     
+    @IBOutlet weak var radiusLabel: UILabel!
     @IBOutlet weak var locRadiusSlider: UISlider!
     
     @IBOutlet weak var foodSwitch: UISwitch!
@@ -20,19 +21,18 @@ class MapSettingsViewController: UIViewController {
     @IBOutlet weak var shopSwitch: UISwitch!
     
     var setLocRad:Float = 0.0
-    var setPref0:Bool = false
-    var setPref1:Bool = false
-    var setPref2:Bool = false
-    var setPref3:Bool = false
-    var setPref4:Bool = false
+    var setFoodPreference:Bool = false
+    var setGymPreference:Bool = false
+    var setParksPreference:Bool = false
+    var setRecreationPreference:Bool = false
+    var setShoppingPreference:Bool = false
+    
+    var delegate: UIViewController!
     
     private lazy var databasePath: DatabaseReference? = {
-      // 1
       guard let uid = Auth.auth().currentUser?.uid else {
         return nil
       }
-
-      // 2
       let ref = Database.database()
         .reference()
         .child("users/\(uid)/preferences")
@@ -45,24 +45,56 @@ class MapSettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        if (foodSwitch.isOn) {
+//            setPref0 = defaults.bool(forKey: "prefFood")
+//        }
+//        if (gymSwitch.isOn) {
+//            setPref1 = defaults.bool(forKey: "prefGym")
+//        }
+//        if (parkSwitch.isOn) {
+//            setPref2 = defaults.bool(forKey: "prefParks")
+//        }
+//        if (shopSwitch.isOn) {
+//            setPref3 = defaults.bool(forKey: "prefRec")
+//        }
+//        if (shopSwitch.isOn) {
+//            setPref4 = defaults.bool(forKey: "prefShop")
+//        }
+//        setLocRad = locRadiusSlider.value
+//        // Do any additional setup after loading the view.
         
-        if (foodSwitch.isOn) {
-            setPref0 = defaults.bool(forKey: "prefFood")
+        guard let databasePath = databasePath else {
+            return
         }
-        if (gymSwitch.isOn) {
-            setPref1 = defaults.bool(forKey: "prefGym")
+        databasePath.observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.exists() {
+                if let preferences = snapshot.value as? [String: Any] {
+                    self.setFoodPreference = preferences["prefFood"] as? Bool ?? false
+                    self.setGymPreference = preferences["prefGym"] as? Bool ?? false
+                    self.setParksPreference = preferences["prefParks"] as? Bool ?? false
+                    self.setRecreationPreference = preferences["prefRec"] as? Bool ?? false
+                    self.setShoppingPreference = preferences["prefShop"] as? Bool ?? false
+                    self.setLocRad = preferences["locRadius"] as? Float ?? 0.0
+                    
+                    // Update UI based on retrieved preferences
+                    DispatchQueue.main.async {
+                        self.updateUI()
+                    }
+                }
+            } else {
+                print("Preferences not found")
+            }
         }
-        if (parkSwitch.isOn) {
-            setPref2 = defaults.bool(forKey: "prefParks")
-        }
-        if (shopSwitch.isOn) {
-            setPref3 = defaults.bool(forKey: "prefRec")
-        }
-        if (shopSwitch.isOn) {
-            setPref4 = defaults.bool(forKey: "prefShop")
-        }
-        setLocRad = locRadiusSlider.value
-        // Do any additional setup after loading the view.
+    }
+    
+    func updateUI() {
+        foodSwitch.isOn = setFoodPreference
+        gymSwitch.isOn = setGymPreference
+        parkSwitch.isOn = setParksPreference
+        recSwitch.isOn = setRecreationPreference
+        shopSwitch.isOn = setShoppingPreference
+        locRadiusSlider.value = setLocRad
+        radiusLabel.text = "Location radius: " + String(setLocRad) + " mi"
     }
     
     //  TODO: store preferences
@@ -74,58 +106,69 @@ class MapSettingsViewController: UIViewController {
         }
 
         // 3
-        let updatePrefs = ["prefFood":setPref0, "prefGym":setPref1, "prefRec":setPref2, "prefShop":setPref3, "locRadius":setLocRad] as [String : Any]
-            databasePath.updateChildValues(updatePrefs)
-        
-        defaults.set(setPref0, forKey: "prefFood")
-        defaults.set(setPref1, forKey: "prefGym")
-        defaults.set(setPref2, forKey: "prefParks")
-        defaults.set(setPref3, forKey: "prefRec")
-        defaults.set(setPref4, forKey: "prefShop")
+        let updatePrefs = [
+            "prefFood":setFoodPreference,
+            "prefParks":setParksPreference,
+            "prefGym":setGymPreference,
+            "prefRec":setRecreationPreference,
+            "prefShop":setShoppingPreference,
+            "locRadius":setLocRad
+        ] as [String : Any]
+            
+        databasePath.updateChildValues(updatePrefs) { (error, _) in
+            if let error = error {
+                print("Error updating preferences: \(error.localizedDescription)")
+            } else {
+                print("Preferences updated successfully")
+                DispatchQueue.main.async {
+                    let alert = UIAlertController(title: "Success", message: "Preferences updated successfully", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default)
+                    alert.addAction(okAction)
+                    self.present(alert, animated: true)
+                }
+                // Call the delegate method to update preferences in the MapViewController
+                if let delegate = self.delegate as? UpdateDatabase {
+                    delegate.update()
+                }
+            }
+        }
+        defaults.set(setFoodPreference, forKey: "prefFood")
+        defaults.set(setGymPreference, forKey: "prefGym")
+        defaults.set(setParksPreference, forKey: "prefParks")
+        defaults.set(setRecreationPreference, forKey: "prefRec")
+        defaults.set(setShoppingPreference, forKey: "prefShop")
         defaults.set(setLocRad, forKey: "locRadius")
     }
     
     // When a modification is made to the location radius sliders in miles
     @IBAction func onLocRadiusChanged(_ sender: Any) {
-        setLocRad = locRadiusSlider.value
+        let roundedValue = round(locRadiusSlider.value * 10) / 10
+        setLocRad = roundedValue
+        radiusLabel.text = "Location radius: " + String(setLocRad) + " mi"
     }
     
-    
     // Setting food activity preference
-    @IBAction func onPref0ValChanged(_ sender: Any) {
-        setPref0 = !setPref0
+    @IBAction func onFoodValChanged(_ sender: Any) {
+        setFoodPreference = !setFoodPreference
     }
     
     // Setting gym activity preference
-    @IBAction func onPref1ValChanged(_ sender: Any) {
-        setPref1 = !setPref1
+    @IBAction func onGymValChanged(_ sender: Any) {
+        setGymPreference = !setGymPreference
     }
     
-    // Setting rec activity preference
-    @IBAction func onPref2ValChanged(_ sender: Any) {
-        setPref2 = !setPref2
+    // Setting parks activity preference
+    @IBAction func onParksValChanged(_ sender: Any) {
+        setParksPreference = !setParksPreference
+    }
+    
+    // Setting recreation activity preference
+    @IBAction func onRecreationValChanged(_ sender: Any) {
+        setRecreationPreference = !setRecreationPreference
     }
     
     // Setting shopping activity preference
-    @IBAction func onPref3ValChanged(_ sender: Any) {
-        setPref3 = !setPref3
+    @IBAction func onShoppingValChanged(_ sender: Any) {
+        setShoppingPreference = !setShoppingPreference
     }
-    
-    // Setting shopping activity preference
-    @IBAction func onPref4ValChanged(_ sender: Any) {
-        setPref3 = !setPref4
-    }
-    
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

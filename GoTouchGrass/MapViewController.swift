@@ -10,13 +10,22 @@ import UIKit
 import CoreLocation
 import MapKit
 import FirebaseFirestore
+import FirebaseDatabase
+import FirebaseAuth
 
 typealias LocationTuple = (String, CLLocationCoordinate2D)
 
-class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate {
+protocol UpdateDatabase {
+    func update()
+}
+
+class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate, UITableViewDataSource, UITableViewDelegate, UpdateDatabase {
+    
+    
     @IBOutlet weak var tableView: UITableView!
     let textCellIdentifier = "TextCell"
-    //    let segueIdentifier = "OperandSegueIdentifier"
+    let segueIdentifier = "MapSettings"
+    
     
     @IBOutlet weak var mapView: MKMapView!
     var locationManager = CLLocationManager()
@@ -24,38 +33,22 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     var locationsList = [LocationTuple]()
     
-    func getLocations(completion: @escaping ([LocationTuple]?, Error?) -> Void) {
-        let db = Firestore.firestore()
-        let collectionReference = db.collection("locations")
-        
-        collectionReference.getDocuments { (querySnapshot, error) in
-            if let error = error {
-                completion(nil, error) // Call completion with error
-            } else {
-                guard let documents = querySnapshot?.documents else {
-                    completion([], nil) // Call completion with empty array
-                    return
-                }
-                
-                var locations: [LocationTuple] = []
-                for document in documents {
-                    // Access string data from document
-                    let stringValue = document.get("name") as? String ?? ""
-                    
-                    // Access geolocation data from document
-                    if let geoPoint = document.get("location") as? GeoPoint {
-                        // Convert GeoPoint to CLLocationCoordinate2D
-                        let location = CLLocationCoordinate2D(latitude: geoPoint.latitude, longitude: geoPoint.longitude)
-                        
-                        // Append tuple to array
-                        locations.append((stringValue, location))
-                    }
-                }
-                completion(locations, nil) // Call completion with locations
-            }
-        }
-    }
+    var foodPreference:Bool = true
+    var gymPreference:Bool = true
+    var parksPreference:Bool = true
+    var recreationPreference:Bool = true
+    var shoppingPreference:Bool = true
+    var setLocRad:Float = 5.0
     
+    private lazy var databasePath: DatabaseReference? = {
+      guard let uid = Auth.auth().currentUser?.uid else {
+        return nil
+      }
+      let ref = Database.database()
+        .reference()
+        .child("users/\(uid)/preferences")
+      return ref
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,19 +65,137 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
             }
         }
 
-        
         mapView.delegate = self
         tableView.delegate = self
         tableView.dataSource = self
         
+        // Setup location tracking parameters
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.delegate = self
+        locationManager.startUpdatingLocation()
+        
+        mapView.showsUserLocation = true
+        
+        accessUser()
+        tableView.reloadData()
+    }
+    
+    //Queries Firestore for locations matching the user's preferences.
+    func getLocations(completion: @escaping ([LocationTuple]?, Error?) -> Void) {
+        let db = Firestore.firestore()
+        let collectionReference = db.collection("locations")
+        
+        var queryConditions:[Filter] = []
+        
+        // Build query depending on user preferences.
+        if foodPreference {
+            queryConditions.append(Filter.whereField("food", isEqualTo: true))
+        }
+        if gymPreference {
+            queryConditions.append(Filter.whereField("gym", isEqualTo: true))
+        }
+        if parksPreference {
+            queryConditions.append(Filter.whereField("parks", isEqualTo: true))
+        }
+        if recreationPreference {
+            queryConditions.append(Filter.whereField("recreation", isEqualTo: true))
+        }
+        if shoppingPreference {
+            queryConditions.append(Filter.whereField("shopping", isEqualTo: true))
+        }
+        
+        let query = collectionReference.whereFilter(Filter.orFilter(queryConditions))
+        
+        query.getDocuments { (querySnapshot, error) in
+            if let error = error {
+                completion(nil, error)
+            } else {
+                guard let documents = querySnapshot?.documents else {
+                    completion([], nil)
+                    return
+                }
+                
+                var locations: [LocationTuple] = []
+                for document in documents {
+                    // Access string data from document
+                    let stringValue = document.get("name") as? String ?? ""
+                    
+                    // Access geolocation data from document
+                    if let geoPoint = document.get("location") as? GeoPoint {
+                        // Convert GeoPoint to CLLocationCoordinate2D
+                        let location = CLLocationCoordinate2D(latitude: geoPoint.latitude, longitude: geoPoint.longitude)
+                        
+                        
+                        // Append tuple to array
+                        locations.append((stringValue, location))
+                    }
+                }
+                completion(locations, nil)
+            }
+        }
+    }
+    
+    //Gets the user's preferences.
+    func accessUser() {
+//        guard let databasePath = databasePath else {
+//            return
+//        }
+//        databasePath.observeSingleEvent(of: .value) { [self] (snapshot) in
+//            if snapshot.exists() {
+//                if let preferences = snapshot.value as? [String: Any] {
+//                    self.foodPreference = preferences["prefFood"] as? Bool ?? false
+//                    self.gymPreference = preferences["prefGym"] as? Bool ?? false
+//                    self.parksPreference = preferences["prefParks"] as? Bool ?? false
+//                    self.recreationPreference = preferences["prefRec"] as? Bool ?? false
+//                    self.shoppingPreference = preferences["prefShop"] as? Bool ?? false
+//                    self.setLocRad = preferences["locRadius"] as? Float ?? 0.0
+//                }
+//            } else {
+//                print("Preferences not found")
+//            }
+//        }
+        foodPreference = defaults.bool(forKey: "prefFood")
+        gymPreference = defaults.bool(forKey: "prefGym")
+        parksPreference = defaults.bool(forKey: "prefParks")
+        recreationPreference = defaults.bool(forKey: "prefRec")
+        shoppingPreference = defaults.bool(forKey: "prefShop")
+        setLocRad = defaults.float(forKey: "locRadius")
+        
+        buildLocationData()
+    }
+    
+    func buildLocationData() {
         getLocations() { [self] (locations, error) in
-            locationsList = locations ?? []
+            locationsList.removeAll()
+            let rawLocationsList = locations ?? []
+            if let targetCLLocation = locationManager.location {
+                print("We have it")
+                //We have access to location, can filter further (by distance)
+                for location in rawLocationsList {
+                    // Assuming currentLocation is your current location's CLLocationCoordinate2D
+                    let currentLocation = location.1
+                    // Create CLLocation objects for both coordinates
+                    let currentCLLocation = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
+                    
+                    // Calculate the distance between the two CLLocation objects
+                    let distanceInMeters = currentCLLocation.distance(from: targetCLLocation)
+                    
+                    // Convert distance to miles
+                    let distanceInMiles = distanceInMeters / 1609.34
+                    
+                    if Float(distanceInMiles) <= setLocRad {
+                        locationsList.append(location)
+                    }
+                }
+            }
             tableView.reloadData()
             if let error = error {
                 print("Error getting locations: \(error)")
             } else if let locations = locations {
                 // Handle retrieved locations
-                print("Locations: \(locations)")
+                locationsList = sortLocationsByDistance(locations: locations)
+                mapView.removeAnnotations(mapView.annotations)
                 for location in locations {
                     let loc = MKPointAnnotation()
                     loc.title = location.0
@@ -96,15 +207,27 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         
         mapView.showAnnotations(mapView.annotations, animated: true)
         mapView.reloadInputViews()
+    }
+    
+    func update() {
+        accessUser()
+    }
+    
+    func sortLocationsByDistance(locations: [LocationTuple]) -> [LocationTuple] {
+        guard let currentLocation = locationManager.location else {
+            return locations
+        }
         
+        // Sort locations based on distance from current location
+        let sortedLocations = locations.sorted { (location1, location2) -> Bool in
+            let location1CLLocation = CLLocation(latitude: location1.1.latitude, longitude: location1.1.longitude)
+            let location2CLLocation = CLLocation(latitude: location2.1.latitude, longitude: location2.1.longitude)
+            let distance1 = currentLocation.distance(from: location1CLLocation)
+            let distance2 = currentLocation.distance(from: location2CLLocation)
+            return distance1 < distance2
+        }
         
-        // Setup location tracking parameters
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = kCLDistanceFilterNone
-        locationManager.delegate = self
-        locationManager.startUpdatingLocation()
-        
-        mapView.showsUserLocation = true
+        return sortedLocations
     }
     
     //Respond to location changes
@@ -129,6 +252,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         } else {
             annotationView!.annotation = annotation
         }
+        
+        let color = UIColor(red: 1.0, green: 0.514, blue: 0.376, alpha: 1.0)
+        annotationView?.tintColor = color
         
         return annotationView
     }
@@ -159,5 +285,32 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         cell.detailTextLabel?.text = String(format: "%.1f", distanceInMiles) + " miles away"
         
         return cell
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let annotation = view.annotation as? MKPointAnnotation {
+            openGoogleMaps(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+        }
+    }
+    
+    // Function to open Google Maps with specified location
+    func openGoogleMaps(latitude: Double, longitude: Double) {
+        if let url = URL(string: "comgooglemaps://?saddr=&daddr=\(latitude),\(longitude)&directionsmode=driving") {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            } else {
+                // Google Maps app is not installed, open in browser
+                if let webURL = URL(string: "https://www.google.com/maps/dir/?api=1&destination=\(latitude),\(longitude)&travelmode=driving") {
+                    UIApplication.shared.open(webURL, options: [:], completionHandler: nil)
+                }
+            }
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == segueIdentifier,
+           let nextVC = segue.destination as? MapSettingsViewController {
+            nextVC.delegate = self
+        }
     }
 }
