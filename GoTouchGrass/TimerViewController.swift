@@ -61,6 +61,7 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationWillResignActive(notification:)), name: UIApplication.willResignActiveNotification, object: nil)
     }
 
     // Interactable slider to make the timer
@@ -70,6 +71,37 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
         
         count = minutes * 60
         timerText.text = makeTimeString(minutes: minutes, seconds: 0)
+    }
+    
+    @objc func applicationWillResignActive(notification: NSNotification) {
+        let notificationCenter = UNUserNotificationCenter.current()
+        let content = UNMutableNotificationContent()
+        content.title = "Timer Void!"
+        content.body = "If you leave the app, you lose your timer!!!"
+        content.sound = .default
+        
+        // Specify the image name from the assets file
+        let _ = "logo"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.01, repeats: false)
+        let request = UNNotificationRequest(identifier: "timerNotification", content: content, trigger: trigger)
+
+        notificationCenter.removePendingNotificationRequests(withIdentifiers: ["timerNotification"])
+        notificationCenter.add(request) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+        
+        timerCounting = false
+        timer.invalidate()
+        timerSlider.isEnabled = true
+        startResetButton.setTitle("START", for: .normal)
+        startResetButton.setTitleColor(UIColor.green, for: .normal)
+        self.timerText.text = makeTimeString(minutes: 0, seconds: 5)
+        timerSlider.value = 5
+        count = 5
+        
     }
     
     
