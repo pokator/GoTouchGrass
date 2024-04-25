@@ -66,7 +66,7 @@ class TimerDoneViewController: UIViewController {
                 totalTimeLabel.text = totalTimeCalc(timeDone:prefs.timeDone)
                 taskCompletionLabel.text = "\(numTasksDone()) out of \(checkList.count) tasks completed!"
                 
-                if numTasksDone() == checkList.count {
+                if numTasksDone() == checkList.count && checkList.count != 0 {
                     congratsText.text = "Well done! You got all your tasks done!"
                 } else {
                     congratsText.text = ""

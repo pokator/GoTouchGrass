@@ -67,10 +67,12 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
     // Interactable slider to make the timer
     @IBAction func sliderMoved(_ sender: UISlider) {
         let value = Int(sender.value)
-        let minutes = value / 60
-        
-        count = minutes * 60
-        timerText.text = makeTimeString(minutes: minutes, seconds: 0)
+        if ((value / 60) % 5 == 0) {
+            count = value
+            let minutes = value / 60
+            
+            timerText.text = makeTimeString(minutes: minutes, seconds: 0)
+        }
     }
     
     @objc func applicationWillResignActive(notification: NSNotification) {
