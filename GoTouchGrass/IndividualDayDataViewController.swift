@@ -22,9 +22,6 @@ class IndividualDayDataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        // currDataLabel.text = "MM-DD-YYYY"
         let formatter = DateFormatter()
         formatter.dateFormat = "MM-dd-yyyy"
         currDataLabel.text =  formatter.string(from: date)
