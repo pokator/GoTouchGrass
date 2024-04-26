@@ -13,7 +13,7 @@ class DataDisplayViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var monthLabel: UILabel!
     
     let dayIdentifier = "dayData"
-    
+
     var selectedDate = Date()
     var totalSquares = [String]()
     
@@ -77,12 +77,25 @@ class DataDisplayViewController: UIViewController, UICollectionViewDelegate, UIC
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CalenderCell,
+              let dayString = cell.dayOfMonth.text,
+              let day = Int(dayString) else {
+            return
+        }
+        
+        let calendar = Calendar.current
+        var dateComponents = calendar.dateComponents([.year, .month], from: selectedDate)
+        dateComponents.day = day
+        if let date = calendar.date(from: dateComponents) {
+            selectedDate = date
+            performSegue(withIdentifier: dayIdentifier, sender: nil)
+        }
+    }
  
     override open var shouldAutorotate: Bool {
         return false
     }
-    
-    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -91,8 +104,5 @@ class DataDisplayViewController: UIViewController, UICollectionViewDelegate, UIC
             individualDayVC.date = selectedDate
         }
     }
-    
-
-
 }
 
