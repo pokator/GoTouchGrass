@@ -18,6 +18,8 @@ class ProfileSettingsViewController: UIViewController {
     
     @IBOutlet weak var confirmNewPasswordField: UITextField!
     
+    let logoutSegueID = "logOutSegueIdentifier"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,28 +43,52 @@ class ProfileSettingsViewController: UIViewController {
         // TODO: actual email changing currently disabled
         if ((newEmailField.text?.isEmpty) != true) {
             print("Changing email")
-            //Auth.auth().currentUser?.sendEmailVerification(beforeUpdatingEmail:  newEmailField.text!) { error in
-              // ...
-            //}
+            let controller = UIAlertController(
+                title: "Confirmation email sent", message: "Check for a confirmation email to finish changing your email",
+                preferredStyle: .alert)
+            controller.addAction(UIAlertAction(
+                title: "Close",
+                style: .default))
+            Auth.auth().currentUser?.sendEmailVerification(beforeUpdatingEmail:  newEmailField.text!) { error in
+               //...
+            }
+            newEmailField.text = ""
+            present(controller,animated: true)
         }
         
         // Change username
         if (((newUsernameField.text?.isEmpty) != true)) {
             let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
             print("Changing username")
+            let controller = UIAlertController(
+                title: "Success", message: "Username changed successfully",
+                preferredStyle: .alert)
+            controller.addAction(UIAlertAction(
+                title: "Close",
+                style: .default))
             changeRequest?.displayName = newUsernameField.text!
             changeRequest?.commitChanges { error in
                 // ...
             }
+            newUsernameField.text = ""
+            present(controller,animated: true)
         }
         
         // Change password
         if ((newPasswordField.text?.isEmpty) != true && (confirmNewPasswordField.text?.isEmpty) != true) {
             if (newPasswordField.text == confirmNewPasswordField.text) {
                 print("Changing password")
+                let controller = UIAlertController(
+                    title: "Success", message: "Password changed successfully",
+                    preferredStyle: .alert)
+                controller.addAction(UIAlertAction(
+                    title: "Close",
+                    style: .default))
                 Auth.auth().currentUser?.updatePassword(to: newPasswordField.text!) { error in
                     // ...
                 }
+                newPasswordField.text = ""
+                present(controller,animated: true)
             } else {
                 print("Passwords don't match")
             }
@@ -83,14 +109,15 @@ class ProfileSettingsViewController: UIViewController {
                              {  (action) in
                                 let user = Auth.auth().currentUser
                                  
-                                 //user?.delete { error in
-                                  //   if let error = error {
-                                         // An error happened.
-                                   //  } else {
+                                 user?.delete { error in
+                                     if let error = error {
+                                          // An error happened.
+                                     } else {
                                          // Account deleted.
                                          print("Account deleted")
-                                   //  }
-                             //    }
+                                         self.performSegue(withIdentifier: self.logoutSegueID, sender: nil)
+                                     }
+                                 }
                              })
         controller.addAction(UIAlertAction(
             title: "No",

@@ -9,6 +9,7 @@ import UIKit
 import UserNotifications
 import FirebaseAuth
 import FirebaseDatabase
+import CoreData
 
 class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, UITableViewDelegate, UITableViewDataSource{
     
@@ -58,10 +59,27 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
         startResetButton.setTitleColor(UIColor.green, for: .normal)
         timerText.text = makeTimeString(minutes: 0, seconds: 5)
         
+        let loadedTasks = retrieveTasks()
+        for task in loadedTasks {
+            checkList.insert((ChecklistItem(title: task.value(forKey: "name") as! String)), at: (checkList.count - checkedNum))
+        }
+        
         tableView.delegate = self
         tableView.dataSource = self
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWillResignActive(notification:)), name: UIApplication.willResignActiveNotification, object: nil)
+        tableView.reloadData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        checkList = []
+        checkedNum = 0
+        let loadedTasks = retrieveTasks()
+        for task in loadedTasks {
+            checkList.insert((ChecklistItem(title: task.value(forKey: "name") as! String)), at: (checkList.count - checkedNum))
+        }
+        tableView.reloadData()
     }
 
     // Interactable slider to make the timer
@@ -168,8 +186,6 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
             checkedNum -= 1
             checkList.insert(task, at: checkList.count - self.checkedNum)
         }
-        
-        
         tableView.reloadData()
     }
     
@@ -185,6 +201,7 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
         let addAction = UIAlertAction(title: "Add", style: .default) { [weak self] _ in
             guard let text = alert.textFields?.first?.text else { return }
             self?.checkList.insert((ChecklistItem(title: text)), at: (self!.checkList.count - self!.checkedNum))
+            self?.storeTask(name:text)
             self?.tableView.reloadData()
         }
         
@@ -200,7 +217,9 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
     
     @IBAction func clearListPressed(_ sender: Any) {
         checkList = []
+        self.checkedNum = 0
         tableView.reloadData()
+        clearCoreData()
     }
     
     
@@ -268,5 +287,67 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
         completionHandler([.banner, .sound])
         
     }
+    
+    func storeTask(name:String) {
+        let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: context)
+        
+        task.setValue(name, forKey: "name")
 
+        // commit the changes
+        saveContext()
+    }
+    
+    func retrieveTasks() -> [NSManagedObject] {
+        // retrieve all objects that meet criteria
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName:"Task")
+        var fetchedResults:[NSManagedObject]? = nil
+        
+        do {
+            try fetchedResults = context.fetch(request) as? [NSManagedObject]
+        } catch {
+            print("Error occurred while retrieving data")
+            abort()
+        }
+        
+        return(fetchedResults)!
+    }
+
+    func clearCoreData() {
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
+        var fetchedResults:[NSManagedObject]
+        
+        do {
+            try fetchedResults = context.fetch(request) as! [NSManagedObject]
+            
+            if fetchedResults.count > 0 {
+                // delete it
+                
+                for result in fetchedResults {
+                    context.delete(result)
+                    print("\(result.value(forKey: "name")!) has been deleted")
+                }
+            }
+            saveContext()
+        
+        } catch {
+            print("Error occurred while clearing data")
+            abort()
+        }
+        
+    }
+
+    func saveContext () {
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+    
+    
 }

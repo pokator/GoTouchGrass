@@ -10,9 +10,9 @@
 		0C102B5B2B9A993D0050E7EC /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0C102B5A2B9A993D0050E7EC /* FirebaseAuth */; };
 		0CA361DE2BD1C4B100174E1D /* RecommendationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA361DD2BD1C4B100174E1D /* RecommendationsViewController.swift */; };
 		0CA361E02BD1C7F600174E1D /* RecommendationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CA361DF2BD1C7F600174E1D /* RecommendationTableViewCell.swift */; };
+		0CB167232BDB54E600B4D9A9 /* appIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0CB167222BDB54E600B4D9A9 /* appIcon.png */; };
 		0CD79F862BB74F7F00AC423E /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD79F852BB74F7F00AC423E /* FirebaseDatabase */; };
 		0CD79F882BB74F7F00AC423E /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0CD79F872BB74F7F00AC423E /* FirebaseDatabaseSwift */; };
-		0CE39C922BB77AD300D32E6B /* DatabaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE39C912BB77AD300D32E6B /* DatabaseViewController.swift */; };
 		0CE39C942BB7808500D32E6B /* UserPrefsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CE39C932BB7808500D32E6B /* UserPrefsModel.swift */; };
 		0CF154F62B92A6DD002E84D0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF154F52B92A6DD002E84D0 /* LoginViewController.swift */; };
 		0CF154F82B92A966002E84D0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CF154F72B92A966002E84D0 /* HomeViewController.swift */; };
@@ -52,7 +52,7 @@
 /* Begin PBXFileReference section */
 		0CA361DD2BD1C4B100174E1D /* RecommendationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsViewController.swift; sourceTree = "<group>"; };
 		0CA361DF2BD1C7F600174E1D /* RecommendationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationTableViewCell.swift; sourceTree = "<group>"; };
-		0CE39C912BB77AD300D32E6B /* DatabaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseViewController.swift; sourceTree = "<group>"; };
+		0CB167222BDB54E600B4D9A9 /* appIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = appIcon.png; path = Media.xcassets/appIcon.png; sourceTree = "<group>"; };
 		0CE39C932BB7808500D32E6B /* UserPrefsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPrefsModel.swift; sourceTree = "<group>"; };
 		0CF154F52B92A6DD002E84D0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0CF154F72B92A966002E84D0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -116,7 +116,6 @@
 		210AD31E2B8D6A0100D60970 = {
 			isa = PBXGroup;
 			children = (
-				0CE39C912BB77AD300D32E6B /* DatabaseViewController.swift */,
 				210AD3292B8D6A0100D60970 /* GoTouchGrass */,
 				210AD3282B8D6A0100D60970 /* Products */,
 				0C102B592B9A993D0050E7EC /* Frameworks */,
@@ -159,6 +158,7 @@
 				892B527D2BA5262900DD6149 /* ProfileViewController.swift */,
 				8CE2F9522BC0C01B005106AA /* MapSettingsViewController.swift */,
 				210AD38B2BA3597000D60970 /* MapViewController.swift */,
+				0CB167222BDB54E600B4D9A9 /* appIcon.png */,
 				210AD3362B8D6A0300D60970 /* Assets.xcassets */,
 				210AD3382B8D6A0300D60970 /* LaunchScreen.storyboard */,
 				8CEEA9232B8D721800698724 /* Media.xcassets */,
@@ -245,6 +245,7 @@
 			files = (
 				210AD33A2B8D6A0300D60970 /* LaunchScreen.storyboard in Resources */,
 				210AD3372B8D6A0300D60970 /* Assets.xcassets in Resources */,
+				0CB167232BDB54E600B4D9A9 /* appIcon.png in Resources */,
 				8C3429BC2BA90895000BCC61 /* README.pdf in Resources */,
 				8C53C58F2B928238000BCC29 /* GoogleService-Info.plist in Resources */,
 				8CEEA9242B8D721800698724 /* Media.xcassets in Resources */,
@@ -262,7 +263,6 @@
 				892B52842BA67C6500DD6149 /* SetUpViewController.swift in Sources */,
 				0CA361DE2BD1C4B100174E1D /* RecommendationsViewController.swift in Sources */,
 				210AD32F2B8D6A0100D60970 /* ViewController.swift in Sources */,
-				0CE39C922BB77AD300D32E6B /* DatabaseViewController.swift in Sources */,
 				210AD32B2B8D6A0100D60970 /* AppDelegate.swift in Sources */,
 				892B527E2BA5262A00DD6149 /* ProfileViewController.swift in Sources */,
 				0CE39C942BB7808500D32E6B /* UserPrefsModel.swift in Sources */,
