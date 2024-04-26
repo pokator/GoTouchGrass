@@ -107,25 +107,60 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Today's Activities" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PtZ-yZ-Ccg">
-                                <rect key="frame" x="106" y="174" width="180" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today's Activities" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PtZ-yZ-Ccg">
+                                <rect key="frame" x="106.66666666666669" y="174" width="180" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1O7-jR-lcV">
-                                <rect key="frame" x="132" y="625" width="129" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="h5X-gP-Nt1">
+                                <rect key="frame" x="16" y="267" width="361" height="318"/>
+                                <color key="backgroundColor" red="0.77296419149999995" green="0.81200278709999996" blue="0.73392559599999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="ihq-OW-CFQ">
+                                        <rect key="frame" x="0.0" y="50" width="361" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ihq-OW-CFQ" id="T5i-V4-ncQ">
+                                            <rect key="frame" x="0.0" y="0.0" width="361" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1LR-yb-wUF">
+                                <rect key="frame" x="16" y="224" width="102" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Buddy Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Add Tasks"/>
                                 <connections>
-                                    <segue destination="fE7-Sf-zbz" kind="show" identifier="StudyBuddySegue" id="7hw-ia-Rn2"/>
+                                    <action selector="addTaskPressed:" destination="zNW-R8-be0" eventType="touchUpInside" id="Sfr-Id-UPo"/>
+                                    <action selector="addTaskPressed:" destination="nHB-Z8-Sxj" eventType="touchUpInside" id="kwJ-T9-Oaj"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oMa-2e-1ru">
+                                <rect key="frame" x="305" y="224" width="72" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Clear"/>
+                                <connections>
+                                    <action selector="clearListPressed:" destination="nHB-Z8-Sxj" eventType="touchUpInside" id="aoR-3k-0Lg"/>
+                                    <action selector="clearListPressed:" destination="zNW-R8-be0" eventType="touchUpInside" id="mgj-db-6Ci"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sl3-6c-b8w"/>
                         <color key="backgroundColor" red="0.88235294117647056" green="0.92156862745098034" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="h5X-gP-Nt1" firstAttribute="top" secondItem="PtZ-yZ-Ccg" secondAttribute="bottom" constant="64" id="7U0-93-Xf1"/>
+                            <constraint firstItem="oMa-2e-1ru" firstAttribute="leading" secondItem="1LR-yb-wUF" secondAttribute="trailing" constant="187" id="8su-Xe-9gB"/>
+                            <constraint firstItem="h5X-gP-Nt1" firstAttribute="top" secondItem="oMa-2e-1ru" secondAttribute="bottom" constant="8" id="HBj-gC-OMg"/>
+                            <constraint firstItem="h5X-gP-Nt1" firstAttribute="centerX" secondItem="PtZ-yZ-Ccg" secondAttribute="centerX" id="JoT-dW-hOd"/>
+                            <constraint firstItem="h5X-gP-Nt1" firstAttribute="top" secondItem="1LR-yb-wUF" secondAttribute="bottom" constant="8" symbolic="YES" id="L3s-5z-bhQ"/>
+                            <constraint firstItem="h5X-gP-Nt1" firstAttribute="leading" secondItem="bId-ZY-isM" secondAttribute="leadingMargin" id="Nqo-yY-OXf"/>
+                            <constraint firstItem="sl3-6c-b8w" firstAttribute="trailing" secondItem="oMa-2e-1ru" secondAttribute="trailing" constant="16" id="Q0B-3E-B8Y"/>
+                            <constraint firstItem="1LR-yb-wUF" firstAttribute="leading" secondItem="sl3-6c-b8w" secondAttribute="leading" constant="16" id="jIH-GO-PI9"/>
+                            <constraint firstItem="h5X-gP-Nt1" firstAttribute="centerY" secondItem="bId-ZY-isM" secondAttribute="centerY" id="kGg-ck-04l"/>
+                            <constraint firstItem="h5X-gP-Nt1" firstAttribute="centerX" secondItem="bId-ZY-isM" secondAttribute="centerX" id="lib-xp-XA8"/>
+                            <constraint firstItem="PtZ-yZ-Ccg" firstAttribute="top" secondItem="sl3-6c-b8w" secondAttribute="top" constant="130" id="vAJ-Hz-gGO"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="SHS-Wu-bYX">
                         <nil key="title"/>
@@ -157,6 +192,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="h5X-gP-Nt1" id="MFV-zs-Xk3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GHR-7s-waf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -459,7 +497,7 @@
             <objects>
                 <viewController title="Profile" id="2uU-Rn-Hbn" customClass="ProfileViewController" customModule="GoTouchGrass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w4n-Hq-tPe">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RhM-DG-XGw">
@@ -561,7 +599,7 @@
             <objects>
                 <viewController title="Settings" id="4Ca-4j-Slb" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0OL-Id-hGA">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6VF-rz-vLa">
@@ -638,7 +676,7 @@
             <objects>
                 <viewController id="xDm-vQ-Ig7" customClass="ProfileSettingsViewController" customModule="GoTouchGrass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="wwR-ga-nt0">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IJW-jR-fl1">
@@ -732,6 +770,7 @@
                         <outlet property="newEmailField" destination="GWE-Ju-Ygz" id="sqx-Xh-0RE"/>
                         <outlet property="newPasswordField" destination="3pj-dr-kEy" id="Gk9-if-D6S"/>
                         <outlet property="newUsernameField" destination="iOe-bU-fc1" id="ir8-eB-hrI"/>
+                        <segue destination="BYZ-38-t0r" kind="presentation" identifier="logOutSegueIdentifier" modalPresentationStyle="fullScreen" id="CYZ-e4-hIe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zW9-67-PtX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -788,7 +827,7 @@
             <objects>
                 <viewController title="Customize" id="J3I-FY-Est" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RYj-PZ-nZB">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Buddy Setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHa-Bb-ZKV">
@@ -1920,8 +1959,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="lCi-BQ-j12"/>
-        <segue reference="Bsb-1h-MAq"/>
-        <segue reference="3d4-bF-Wsh"/>
+        <segue reference="urH-M4-t7O"/>
+        <segue reference="CYZ-e4-hIe"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.left.circle" catalog="system" width="128" height="123"/>
@@ -1932,7 +1971,7 @@
         <image name="house.circle.fill" catalog="system" width="128" height="123"/>
         <image name="logoGTG-removebg-preview" width="495" height="504"/>
         <image name="mappin.circle.fill" catalog="system" width="128" height="123"/>
-        <image name="person" catalog="system" width="128" height="121"/>
+        <image name="person" catalog="system" width="32" height="32"/>
         <image name="timer.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

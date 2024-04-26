@@ -40,6 +40,9 @@ class TimerDoneViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("total time: ", defaults.integer(forKey: "totalTime"))
+        print("num breaks: ", defaults.integer(forKey: "numBreaks"))
+        
         // 2
         databasePath?
             .observe(.value) { [weak self] snapshot,error  in
@@ -92,10 +95,7 @@ class TimerDoneViewController: UIViewController {
     }
     
     func totalTimeCalc(timeDone:Int) -> String {
-        
         // TODO : need to update timeDone to use coredata of total time
-        print("Time done retrieved: ", timeDone)
-        
         let seconds = timeDone
         let minutes = Float(timeDone / 60)
         let hours = minutes / 60
