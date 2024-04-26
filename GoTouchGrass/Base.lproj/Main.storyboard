@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="meU-fY-3pC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="meU-fY-3pC">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -114,15 +114,6 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1O7-jR-lcV">
-                                <rect key="frame" x="132" y="625" width="129" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Buddy Button"/>
-                                <connections>
-                                    <segue destination="fE7-Sf-zbz" kind="show" identifier="StudyBuddySegue" id="7hw-ia-Rn2"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sl3-6c-b8w"/>
                         <color key="backgroundColor" red="0.88235294117647056" green="0.92156862745098034" blue="0.82745098039215681" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -788,7 +779,7 @@
             <objects>
                 <viewController title="Customize" id="J3I-FY-Est" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RYj-PZ-nZB">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Buddy Setting" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHa-Bb-ZKV">
@@ -1545,7 +1536,6 @@
                                         <size key="customSize" width="71" height="79"/>
                                         <connections>
                                             <outlet property="dayOfMonth" destination="5b6-F3-7J3" id="pGu-PD-K9d"/>
-                                            <segue destination="qNI-Fc-vUc" kind="show" identifier="dayData" id="o1R-iv-e58"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -1587,6 +1577,7 @@
                     <connections>
                         <outlet property="collectionView" destination="vSa-m1-H6c" id="63Y-Zl-mOx"/>
                         <outlet property="monthLabel" destination="fju-Kg-qwh" id="RoZ-NC-6Ab"/>
+                        <segue destination="qNI-Fc-vUc" kind="show" identifier="dayData" id="BQv-80-r5h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zvT-Xu-BxM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
