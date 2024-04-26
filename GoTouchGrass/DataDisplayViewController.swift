@@ -38,9 +38,9 @@ class DataDisplayViewController: UIViewController, UICollectionViewDelegate, UIC
         
         let daysInMonth = CalendarHelper().daysInMonth(date: selectedDate)
         let firstDayOfMonth = CalendarHelper().firstOfMonth(date: selectedDate)
-        let startingSpaces = CalendarHelper().weekDay(date: selectedDate)
+        let startingSpaces = CalendarHelper().weekDay(date: firstDayOfMonth)
         
-        var count = 0
+        var count = 1
         
         while (count <= 42) {
             if (count <= startingSpaces || count - startingSpaces > daysInMonth) {
