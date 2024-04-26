@@ -150,6 +150,9 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == timerDoneSegue,
         let destination = segue.destination as? TimerDoneViewController {
+            defaults.set(defaults.integer(forKey: "totalTime") + timeStart, forKey: "totalTime")
+            defaults.set(defaults.integer(forKey: "numBreaks") + 1, forKey:"numBreaks")
+            defaults.set(checkList.count, forKey: "tasksCompleted")
             destination.checkList = checkList
             destination.timeDone = timeStart
             destination.delegate = self

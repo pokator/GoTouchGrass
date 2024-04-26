@@ -82,6 +82,9 @@ class SetUpViewController: UIViewController {
                 defaults.set(setPref3, forKey: "prefRec")
                 defaults.set(setPref4, forKey: "prefShop")
                 defaults.set(setLocRad, forKey: "locRadius")
+                defaults.set(0, forKey: "totalTime")
+                defaults.set(0, forKey: "tasksCompleted")
+                defaults.set(0, forKey: "numBreaks")
                 print(defaults.dictionaryRepresentation())
                 //newDataText = (dataField.text ?? "")
                 // 1
