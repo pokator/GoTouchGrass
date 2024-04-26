@@ -10,17 +10,29 @@ import FirebaseAuth
 
 class ProfileViewController: UIViewController {
 
-    var username : String = ""
+    var username: String = ""
     let logoutSegueID = "logOutSegueIdentifier"
     @IBOutlet weak var dateUserCreated: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var totalTimeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         username = Auth.auth().currentUser!.displayName ?? "Missing username"
-       // print("User: ", username)
+        // print("User: ", username)
         // Do any additional setup after loading the view.
         usernameLabel.text = username
+        
+        if let creationDate = Auth.auth().currentUser?.metadata.creationDate {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMM d, yyyy"
+            let dataString = dateFormatter.string(from: creationDate)
+            dateUserCreated.text = "User since: \(dataString)"
+        } else {
+            dateUserCreated.text = "Creation Date Unavaliable"
+        }
+        
+        accesUser()
     }
     
     
@@ -49,6 +61,10 @@ class ProfileViewController: UIViewController {
         present(controller,animated: true)
     }
     
+    func accesUser() {
+        var time = defaults.integer(forKey: "totalTime")
+        totalTimeLabel.text = "\(time) seconds"
+    }
     /*
     // MARK: - Navigation
 
@@ -58,5 +74,4 @@ class ProfileViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 }

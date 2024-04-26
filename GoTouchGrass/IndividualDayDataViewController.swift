@@ -14,7 +14,7 @@ class IndividualDayDataViewController: UIViewController {
     @IBOutlet weak var currDataLabel: UILabel!
     @IBOutlet weak var currTotalTimeLabel: UILabel!
     @IBOutlet weak var totalTimeStatus: UILabel!
-    @IBOutlet var numBreaksLabel: UIView!
+    @IBOutlet var numBreaksLabel: UILabel!
     @IBOutlet weak var breakStatus: UILabel!
     
     @IBOutlet weak var pieChart: PieChartView!
@@ -27,9 +27,9 @@ class IndividualDayDataViewController: UIViewController {
         currDataLabel.text =  formatter.string(from: date)
         
         let dataEntries = [
-            PieChartDataEntry(value: 30, label: "Task 1"),
-            PieChartDataEntry(value: 20, label: "Task 2"),
-            PieChartDataEntry(value: 50, label: "Task 3")
+            PieChartDataEntry(value: 10, label: "ML assignment"),
+            PieChartDataEntry(value: 40, label: "Final project IOS"),
+            PieChartDataEntry(value: 50, label: "Studying for algo")
         ]
                 
         let dataSet = PieChartDataSet(entries: dataEntries, label: "")
@@ -43,9 +43,9 @@ class IndividualDayDataViewController: UIViewController {
         pieChart.data = data
         pieChart.holeRadiusPercent = 0.4
         pieChart.holeColor = colorWithHex(hex: 14805971)
-        
         pieChart.animate(xAxisDuration: 2.0, yAxisDuration: 2.0)
             
+        accesUser()
     }
     
     func colorWithHex(hex: Int, alpha: CGFloat = 1.0) -> UIColor {
@@ -57,7 +57,21 @@ class IndividualDayDataViewController: UIViewController {
         )
     }
 
-    
+    func accesUser() {
+        var time = defaults.integer(forKey: "totalTime")
+        currTotalTimeLabel.text = "\(time) seconds"
+        totalTimeStatus.text = "The total focus time you have during this month: \(time) seconds"
+        var breaks = defaults.integer(forKey: "numBreaks")
+        numBreaksLabel.text = "Total # of breaks: \(breaks)"
+        if breaks == 0 {
+            breakStatus.text = "WOAH you need to take some breaks! You've done so much work! Go touch grass!"
+        } else if breaks < 2 {
+            breakStatus.text = "Come on you should take some more breaks! Make sure to stretch your legs!"
+        } else {
+            breakStatus.text = "You're doing AMAZING! Keep touching that grass!"
+        }
+        var taskCompleted = defaults.integer(forKey: "tasksCompleted")
+    }
 
     /*
     // MARK: - Navigation
