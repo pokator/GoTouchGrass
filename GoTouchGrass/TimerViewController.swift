@@ -42,7 +42,7 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
     
     var timer:Timer = Timer()
     var timeStart = 0
-    var count:Int = 5
+    var count:Int = 900 // 15 min default
     var timerCounting:Bool = false
     
     // Most of the timer code was from youtube video https://www.youtube.com/watch?v=3TbdoVhgQmE
@@ -57,8 +57,8 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
         }
         
         startResetButton.setTitleColor(UIColor.green, for: .normal)
-        timerText.text = makeTimeString(minutes: 0, seconds: 5)
-        
+        timerText.text = makeTimeString(minutes: 15, seconds: 0)
+        timerSlider.setValue(900.0, animated: true)
         let loadedTasks = retrieveTasks()
         for task in loadedTasks {
             checkList.insert((ChecklistItem(title: task.value(forKey: "name") as! String)), at: (checkList.count - checkedNum))
@@ -120,9 +120,9 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
             timerSlider.isEnabled = true
             startResetButton.setTitle("START", for: .normal)
             startResetButton.setTitleColor(UIColor.green, for: .normal)
-            self.timerText.text = makeTimeString(minutes: 0, seconds: 5)
-            timerSlider.value = 5
-            count = 5
+            self.timerText.text = makeTimeString(minutes: 15, seconds: 0)
+            timerSlider.value = 900.0
+            count = 900
         }
         
     }
@@ -135,9 +135,9 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
             timerSlider.isEnabled = true
             startResetButton.setTitle("START", for: .normal)
             startResetButton.setTitleColor(UIColor.green, for: .normal)
-            self.timerText.text = makeTimeString(minutes: 0, seconds: 5)
-            timerSlider.value = 5
-            count = 5
+            self.timerText.text = makeTimeString(minutes: 15, seconds: 0)
+            timerSlider.value = 900.0
+            count = 900
         } else {
             timerCounting = true
             startResetButton.setTitle("RESET", for: .normal)
