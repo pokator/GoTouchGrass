@@ -834,10 +834,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v0T-jO-nMo">
-                                <rect key="frame" x="140" y="63" width="113" height="35"/>
+                                <rect key="frame" x="185" y="74" width="24" height="14"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Timer Done"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
                                 <connections>
                                     <segue destination="81F-LB-GyZ" kind="show" identifier="Timer" id="x1g-zt-63c"/>
                                 </connections>
@@ -907,11 +907,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bQY-dk-gHb">
-                                <rect key="frame" x="137" y="737" width="119" height="35"/>
+                                <rect key="frame" x="65.333333333333343" y="724.33333333333337" width="262.66666666666663" height="47.666666666666629"/>
+                                <color key="tintColor" systemColor="systemGreenColor"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Suggestions"/>
+                                <buttonConfiguration key="configuration" style="plain" title="GO TOUCH GRASS">
+                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle1"/>
+                                </buttonConfiguration>
                                 <connections>
-                                    <segue destination="xSM-PU-cum" kind="show" identifier="Suggestions" id="GOH-Jm-nll"/>
+                                    <segue destination="6UR-aB-Y59" kind="push" identifier="toMapTab" id="M6q-Se-d6q"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Completed!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dt4-Jo-elC">
@@ -933,7 +936,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X53-pQ-5BX">
-                                <rect key="frame" x="176" y="676" width="41.333333333333343" height="41"/>
+                                <rect key="frame" x="176" y="663.33333333333337" width="41.333333333333343" height="41"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -1009,13 +1012,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go Touch Grass" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyD-5E-h88">
-                                <rect key="frame" x="81" y="91" width="231" height="41"/>
+                                <rect key="frame" x="81" y="76" width="231" height="41"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="EMc-6B-ZbI">
-                                <rect key="frame" x="16" y="140" width="361" height="663"/>
+                                <rect key="frame" x="16" y="125" width="361" height="693"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AddedRecommendation" id="GWr-19-MYk" customClass="RecommendationTableViewCell" customModule="GoTouchGrass" customModuleProvider="target">
@@ -1874,6 +1877,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="M6q-Se-d6q"/>
         <segue reference="sd0-tG-RSH"/>
         <segue reference="Jsi-BM-2ZL"/>
         <segue reference="f0c-t5-087"/>

@@ -74,5 +74,14 @@ class TimerDoneViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
+    // Inside the prepareForSegue method of your source view controller
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMapTab" {
+            // Get a reference to the tab bar controller
+            if let tabBarController = self.tabBarController {
+                // Set the desired tab index
+                tabBarController.selectedIndex = 2 // Set it to the index of the tab you want to navigate to
+            }
+        }
+    }
 }
