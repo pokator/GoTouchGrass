@@ -10,23 +10,6 @@ import FirebaseAuth
 import FirebaseDatabase
 
 class TimerDoneViewController: UIViewController {
-
-    private lazy var databasePath: DatabaseReference? = {
-      // 1
-      guard let uid = Auth.auth().currentUser?.uid else {
-        return nil
-      }
-
-      // 2
-      let ref = Database.database()
-        .reference()
-        .child("users/\(uid)/preferences")
-      return ref
-    }()
-
-    // 3
-    private let encoder = JSONEncoder()
-    private let decoder = JSONDecoder()
     
     var checkList = [ChecklistItem]()
     var timeDone = 0
@@ -43,41 +26,6 @@ class TimerDoneViewController: UIViewController {
         print("total time: ", defaults.integer(forKey: "totalTime"))
         print("num breaks: ", defaults.integer(forKey: "numBreaks"))
         
-        // 2
-        databasePath?
-            .observe(.value) { [weak self] snapshot,error  in
-
-            // 3
-            guard
-              let self = self,
-              var json = snapshot.value as? [String: Any]
-            else {
-              return
-            }
-
-            // 4
-            json["id"] = snapshot.key
-    
-            do {
-                // 5
-                let thoughtData = try JSONSerialization.data(withJSONObject: json)
-                // 6
-                let prefs = try self.decoder.decode(UserPrefsModel.self, from: thoughtData)
-            
-                // 7
-                currentTimeLabel.text = "\(prefs.timeDone / 60) minutes spent focused!"
-                totalTimeLabel.text = totalTimeCalc(timeDone:prefs.timeDone)
-                taskCompletionLabel.text = "\(numTasksDone()) out of \(checkList.count) tasks completed!"
-                
-                if numTasksDone() == checkList.count && checkList.count != 0 {
-                    congratsText.text = "Well done! You got all your tasks done!"
-                } else {
-                    congratsText.text = ""
-                }
-            } catch {
-              print("an error occurred", error)
-            }
-          }
         currentTimeLabel.text = String(Float(timeDone / 60)) + " minutes"
         totalTimeLabel.text = totalTimeCalc(timeDone: timeDone)
         // Do any additional setup after loading the view.

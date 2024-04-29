@@ -17,9 +17,9 @@ struct UserPrefsModel: Identifiable, Codable {
     var prefRec:Bool
     var prefShop:Bool
     
-    var timeDone:Int
     var totalTime:Int
-    var taskNum:Int
+    var tasksCompleted:Int
+    var numBreaks:Int
     
     var locRadius:Float
 }

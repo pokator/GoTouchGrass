@@ -49,6 +49,14 @@ class RegisterViewController: UIViewController {
                         self.performSegue(withIdentifier: "registerSuccessSegueID", sender:self)
                     }
                 }
+            } else if (pass != confirmPassField.text) {
+                let controller = UIAlertController(
+                    title: "Mismatched password",
+                    message: "Please confirm your password.",
+                    preferredStyle: .alert)
+                
+                controller.addAction(UIAlertAction(title: "OK", style: .default))
+                self.present(controller,animated: true)
             }
         } else {
             let controller = UIAlertController(

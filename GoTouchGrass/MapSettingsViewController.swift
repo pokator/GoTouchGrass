@@ -45,56 +45,24 @@ class MapSettingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        if (foodSwitch.isOn) {
-//            setPref0 = defaults.bool(forKey: "prefFood")
-//        }
-//        if (gymSwitch.isOn) {
-//            setPref1 = defaults.bool(forKey: "prefGym")
-//        }
-//        if (parkSwitch.isOn) {
-//            setPref2 = defaults.bool(forKey: "prefParks")
-//        }
-//        if (shopSwitch.isOn) {
-//            setPref3 = defaults.bool(forKey: "prefRec")
-//        }
-//        if (shopSwitch.isOn) {
-//            setPref4 = defaults.bool(forKey: "prefShop")
-//        }
-//        setLocRad = locRadiusSlider.value
-//        // Do any additional setup after loading the view.
-        
-        guard let databasePath = databasePath else {
-            return
-        }
-        databasePath.observeSingleEvent(of: .value) { (snapshot) in
-            if snapshot.exists() {
-                if let preferences = snapshot.value as? [String: Any] {
-                    self.setFoodPreference = preferences["prefFood"] as? Bool ?? false
-                    self.setGymPreference = preferences["prefGym"] as? Bool ?? false
-                    self.setParksPreference = preferences["prefParks"] as? Bool ?? false
-                    self.setRecreationPreference = preferences["prefRec"] as? Bool ?? false
-                    self.setShoppingPreference = preferences["prefShop"] as? Bool ?? false
-                    self.setLocRad = preferences["locRadius"] as? Float ?? 0.0
-                    
-                    // Update UI based on retrieved preferences
-                    DispatchQueue.main.async {
-                        self.updateUI()
-                    }
-                }
-            } else {
-                print("Preferences not found")
-            }
-        }
+        // Do any additional setup after loading the view.
+        setFoodPreference = defaults.value(forKey: "prefFood") as! Bool
+        setGymPreference = defaults.value(forKey: "prefGym") as! Bool
+        setParksPreference = defaults.value(forKey: "prefParks") as! Bool
+        setRecreationPreference = defaults.value(forKey: "prefRec") as! Bool
+        setShoppingPreference = defaults.value(forKey: "prefShop") as! Bool
+        setLocRad = defaults.value(forKey: "locRadius") as! Float
+        self.updateUI()
     }
     
     func updateUI() {
-        foodSwitch.isOn = setFoodPreference
-        gymSwitch.isOn = setGymPreference
-        parkSwitch.isOn = setParksPreference
-        recSwitch.isOn = setRecreationPreference
-        shopSwitch.isOn = setShoppingPreference
-        locRadiusSlider.value = setLocRad
-        radiusLabel.text = "Location radius: " + String(setLocRad) + " mi"
+        foodSwitch.isOn = defaults.value(forKey: "prefFood") as! Bool
+        gymSwitch.isOn = defaults.value(forKey: "prefGym") as! Bool
+        parkSwitch.isOn = defaults.value(forKey: "prefParks") as! Bool
+        recSwitch.isOn = defaults.value(forKey: "prefRec") as! Bool
+        shopSwitch.isOn = defaults.value(forKey: "prefShop") as! Bool
+        locRadiusSlider.value = defaults.value(forKey: "locRadius") as! Float
+        radiusLabel.text = "Location radius: " + String(defaults.value(forKey: "locRadius") as! Float) + " mi"
     }
     
     //  TODO: store preferences
@@ -138,6 +106,7 @@ class MapSettingsViewController: UIViewController {
         defaults.set(setRecreationPreference, forKey: "prefRec")
         defaults.set(setShoppingPreference, forKey: "prefShop")
         defaults.set(setLocRad, forKey: "locRadius")
+        print("Setting loc radius: ", String(setLocRad))
     }
     
     // When a modification is made to the location radius sliders in miles
