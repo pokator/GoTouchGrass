@@ -29,6 +29,13 @@ class TimerDoneViewController: UIViewController {
         currentTimeLabel.text = String(Float(timeDone / 60)) + " minutes"
         totalTimeLabel.text = totalTimeCalc(timeDone: timeDone)
         // Do any additional setup after loading the view.
+        taskCompletionLabel.text = "\(numTasksDone()) out of \(checkList.count) tasks completed!"
+
+        if numTasksDone() == checkList.count && checkList.count != 0 {
+            congratsText.text = "Well done! You got all your tasks done!"
+        } else {
+            congratsText.text = ""
+        }
     }
     
     func numTasksDone() -> Int {
