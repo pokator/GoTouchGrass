@@ -8,12 +8,32 @@
 import UIKit
 import CoreLocation
 import CoreData
+import FirebaseDatabase
+import FirebaseAuth
+import UserNotifications
 
 let appDelegate = UIApplication.shared.delegate as! AppDelegate
 let context = appDelegate.persistentContainer.viewContext
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    private lazy var databasePath: DatabaseReference? = {
+      // 1
+      guard let uid = Auth.auth().currentUser?.uid else {
+        return nil
+      }
+
+      // 2
+      let ref = Database.database()
+        .reference()
+        .child("users/\(uid)/preferences")
+      return ref
+    }()
+
+    // 3
+    private let encoder = JSONEncoder()
+    private let decoder = JSONDecoder()
+    
     @IBOutlet weak var tableView: UITableView!
     var checkList = [ChecklistItem]()
     var checkedNum = 0
@@ -22,6 +42,48 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        UNUserNotificationCenter.current().getNotificationSettings(completionHandler: { (settings) in
+            if settings.authorizationStatus == .notDetermined {
+                UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.badge,.sound]) {
+                    (granted,error) in
+                    if granted {
+                        print("Notifs set")
+                    } else if let error = error {
+                        print(error.localizedDescription)
+                    }
+                }
+            }
+        })
+        
+        guard let databasePath = databasePath else {
+            return
+        }
+        databasePath.observeSingleEvent(of: .value) { (snapshot) in
+            if snapshot.exists() {
+                if let preferences = snapshot.value as? [String: Any] {
+                    
+                    // Save user prefs to local
+                    DispatchQueue.main.async {
+                        defaults.set(preferences["prefFood"], forKey: "prefFood")
+                        defaults.set(preferences["prefGym"], forKey: "prefGym")
+                        defaults.set(preferences["prefParks"], forKey: "prefParks")
+                        defaults.set(preferences["prefRec"], forKey: "prefRec")
+                        defaults.set(preferences["prefShop"], forKey: "prefShop")
+                        defaults.set(preferences["locRadius"], forKey: "locRadius")
+                        defaults.set(preferences["totalTime"], forKey: "totalTime")
+                        defaults.set(preferences["tasksCompleted"], forKey: "tasksCompleted")
+                        defaults.set(preferences["numBreaks"], forKey: "numBreaks")
+                        print("Retrieved from database, checking pref food:")
+                        print(defaults.value(forKey: "prefFood") as Any)
+                        print("Checking loc rad:")
+                        print(defaults.value(forKey: "locRadius") as Any)
+                    }
+                }
+            } else {
+                print("Preferences not found")
+            }
+        }
         
         //Ensuring location permissions are setup appropriately
         switch locationManager.authorizationStatus {

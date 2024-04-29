@@ -85,21 +85,19 @@ class SetUpViewController: UIViewController {
                 defaults.set(0, forKey: "totalTime")
                 defaults.set(0, forKey: "tasksCompleted")
                 defaults.set(0, forKey: "numBreaks")
-                print(defaults.dictionaryRepresentation())
+                //print(defaults.dictionaryRepresentation())
                 //newDataText = (dataField.text ?? "")
                 // 1
                 guard let databasePath = databasePath else {
                   return
                 }
 
-                // 2
-                if newDataText.isEmpty {
-                  return
-                }
-
                 // 3
-                let userPrefs = UserPrefsModel(username: usernameField.text ?? "", prefFood:setPref0, prefGym:setPref1, prefParks:setPref2, prefRec:setPref3, prefShop:setPref4, timeDone:5, totalTime:0, taskNum:0, locRadius:setLocRad)
-
+                let userPrefs = UserPrefsModel(username: usernameField.text ?? "username missing", prefFood:setPref0, prefGym:setPref1, prefParks:setPref2, prefRec:setPref3, prefShop:setPref4, totalTime:0, tasksCompleted:0, numBreaks:0, locRadius:setLocRad)
+                
+                print("user prefs set up: ", userPrefs)
+                
+                
                 do {
                   // 4
                   let data = try encoder.encode(userPrefs)
@@ -146,15 +144,21 @@ class SetUpViewController: UIViewController {
         setPref1 = !setPref1
     }
     
-    // Setting rec activity preference
+    // Setting parks activity preference
     @IBAction func onPref2ValChanged(_ sender: Any) {
-        setPref0 = !setPref2
+        setPref2 = !setPref2
+    }
+    
+    // Setting rec activity preference
+    @IBAction func onPref3ValChanged(_ sender: Any) {
+        setPref3 = !setPref3
     }
     
     // Setting shopping activity preference
-    @IBAction func onPref3ValChanged(_ sender: Any) {
-        setPref1 = !setPref3
+    @IBAction func onPref4ValChanged(_ sender: Any) {
+        setPref4 = !setPref4
     }
+    
     
     /*
     // MARK: - Navigation

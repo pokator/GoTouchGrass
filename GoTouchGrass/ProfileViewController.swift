@@ -65,6 +65,8 @@ class ProfileViewController: UIViewController {
         var time = defaults.integer(forKey: "totalTime")
         totalTimeLabel.text = "\(time) seconds"
     }
+    
+    
     /*
     // MARK: - Navigation
 

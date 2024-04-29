@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="meU-fY-3pC">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="meU-fY-3pC">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Map view configurations" minToolsVersion="14.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -370,7 +370,7 @@
                         <outlet property="emailField" destination="EuS-Tm-0SU" id="4Ii-1e-p2X"/>
                         <outlet property="passwordField" destination="bqX-ol-KJO" id="DCI-5g-y0C"/>
                         <outlet property="statusLabel" destination="Igj-QG-sVI" id="Ugs-oY-PkB"/>
-                        <segue destination="WF4-Gw-bPH" kind="presentation" identifier="registerSuccessSegueID" id="mSg-Ak-xD7"/>
+                        <segue destination="WF4-Gw-bPH" kind="presentation" identifier="registerSuccessSegueID" modalPresentationStyle="fullScreen" id="mSg-Ak-xD7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k0x-lS-zT2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -584,7 +584,7 @@
         <!--Settings-->
         <scene sceneID="Hhc-Pw-EVC">
             <objects>
-                <viewController title="Settings" id="4Ca-4j-Slb" sceneMemberID="viewController">
+                <viewController title="Settings" id="4Ca-4j-Slb" customClass="SettingsViewController" customModule="GoTouchGrass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0OL-Id-hGA">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -613,12 +613,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="onTintColor" red="0.5568627451" green="0.78823529410000004" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="onToggleNotifs:" destination="4Ca-4j-Slb" eventType="valueChanged" id="HLX-jy-CgT"/>
+                                </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" title="LocationSwitch" translatesAutoresizingMaskIntoConstraints="NO" id="jgV-2T-MCZ">
                                 <rect key="frame" x="293" y="394" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="onTintColor" red="0.5568627451" green="0.78823529410000004" blue="0.81176470590000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <action selector="onToggleLoc:" destination="4Ca-4j-Slb" eventType="valueChanged" id="sqC-ez-fce"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Push Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FJ3-eN-NVZ">
                                 <rect key="frame" x="69" y="300" width="146" height="22"/>
@@ -653,6 +659,10 @@
                         <color key="backgroundColor" red="0.88235294119999996" green="0.92156862750000001" blue="0.82745098039999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="k2f-ar-GtG"/>
+                    <connections>
+                        <outlet property="LocSwitch" destination="jgV-2T-MCZ" id="ANO-We-9Vu"/>
+                        <outlet property="NotifSwitch" destination="axs-JT-QDQ" id="ob2-O0-Lu1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iTl-He-aQC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1734,7 +1744,7 @@
             <objects>
                 <viewController id="WF4-Gw-bPH" customClass="SetUpViewController" customModule="GoTouchGrass" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9gc-Kd-beV">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter a username and some activities you would prefer to be recommended" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HdC-a7-VXZ">
@@ -1793,7 +1803,7 @@
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Qew-NG-sTK">
                                                 <rect key="frame" x="278.66666666666663" y="0.0" width="51" height="31"/>
                                                 <connections>
-                                                    <action selector="onPref0ValChanged:" destination="WF4-Gw-bPH" eventType="valueChanged" id="4ap-ls-5ks"/>
+                                                    <action selector="onPref0ValChanged:" destination="WF4-Gw-bPH" eventType="valueChanged" id="PKx-3D-8oM"/>
                                                 </connections>
                                             </switch>
                                         </subviews>
@@ -1813,7 +1823,7 @@
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="uLV-Dt-Sv4">
                                                 <rect key="frame" x="277.66666666666663" y="0.0" width="52" height="31"/>
                                                 <connections>
-                                                    <action selector="onPref0ValChanged:" destination="WF4-Gw-bPH" eventType="valueChanged" id="6dT-8y-L3C"/>
+                                                    <action selector="onPref1ValChanged:" destination="WF4-Gw-bPH" eventType="valueChanged" id="Ntf-ME-0qk"/>
                                                 </connections>
                                             </switch>
                                         </subviews>
@@ -1833,7 +1843,7 @@
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Bwk-jd-dCA">
                                                 <rect key="frame" x="278" y="0.0" width="51.666666666666686" height="31"/>
                                                 <connections>
-                                                    <action selector="onPref1ValChanged:" destination="WF4-Gw-bPH" eventType="valueChanged" id="RDz-zz-BCu"/>
+                                                    <action selector="onPref2ValChanged:" destination="WF4-Gw-bPH" eventType="valueChanged" id="pCe-Kf-XF8"/>
                                                 </connections>
                                             </switch>
                                         </subviews>
@@ -1853,7 +1863,7 @@
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="840-k8-WrQ">
                                                 <rect key="frame" x="278.66666666666669" y="0.0" width="52.333333333333314" height="31"/>
                                                 <connections>
-                                                    <action selector="onPref2ValChanged:" destination="WF4-Gw-bPH" eventType="valueChanged" id="1eP-p9-jLQ"/>
+                                                    <action selector="onPref3ValChanged:" destination="WF4-Gw-bPH" eventType="valueChanged" id="Jpk-ZF-DlB"/>
                                                 </connections>
                                             </switch>
                                         </subviews>
@@ -1873,7 +1883,7 @@
                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Lfe-K7-jbn">
                                                 <rect key="frame" x="279" y="0.0" width="52" height="31"/>
                                                 <connections>
-                                                    <action selector="onPref3ValChanged:" destination="WF4-Gw-bPH" eventType="valueChanged" id="er1-bc-4rD"/>
+                                                    <action selector="onPref4ValChanged:" destination="WF4-Gw-bPH" eventType="valueChanged" id="nt0-CS-MZA"/>
                                                 </connections>
                                             </switch>
                                         </subviews>
@@ -1939,8 +1949,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="sd0-tG-RSH"/>
-        <segue reference="Ge1-g8-gLH"/>
-        <segue reference="rtt-ex-m78"/>
+        <segue reference="Jsi-BM-2ZL"/>
+        <segue reference="3d4-bF-Wsh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.turn.up.left.circle" catalog="system" width="128" height="123"/>
