@@ -30,7 +30,7 @@ class DataDisplayViewController: UIViewController, UICollectionViewDelegate, UIC
         setMonthView()
     }
     
-    // comment
+    // setiing the cells view to fix the collection view
     func setCellsView() {
         let width = (collectionView.frame.size.width - 2) / 8
         let height = (collectionView.frame.size.height - 2) / 8
@@ -39,7 +39,7 @@ class DataDisplayViewController: UIViewController, UICollectionViewDelegate, UIC
         flowLayout.itemSize = CGSize(width: width, height: height)
     }
     
-    // comment
+    // set the month view based on when the first day of month is
     func setMonthView() {
         totalSquares.removeAll()
         
@@ -48,7 +48,6 @@ class DataDisplayViewController: UIViewController, UICollectionViewDelegate, UIC
         let startingSpaces = CalendarHelper().weekDay(date: firstDayOfMonth)
         
         var count = 1
-        
         while (count <= 42) {
             if (count <= startingSpaces || count - startingSpaces > daysInMonth) {
                 totalSquares.append("")
@@ -62,28 +61,31 @@ class DataDisplayViewController: UIViewController, UICollectionViewDelegate, UIC
         collectionView.reloadData()
     }
     
-    // comment
+    // when the previous button is pressed changes the view
     @IBAction func previousMonthPressed(_ sender: Any) {
         selectedDate = CalendarHelper().minusMonth(date: selectedDate)
         setMonthView()
     }
     
-    // comment
+    // when the next button is pressed changes the view
     @IBAction func nextMonthPressed(_ sender: Any) {
         selectedDate = CalendarHelper().plusMonth(date: selectedDate)
         setMonthView()
     }
     
+    // count for all the cells in collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         totalSquares.count
     }
     
+    // returns the cell
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "calCell", for: indexPath) as! CalenderCell
         cell.dayOfMonth.text = totalSquares[indexPath.item]
         return cell
     }
     
+    // activates when a cell is selected makes sure its a date cell, and that we have stored data for this day
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CalenderCell,
               let dayString = cell.dayOfMonth.text,
@@ -99,14 +101,13 @@ class DataDisplayViewController: UIViewController, UICollectionViewDelegate, UIC
             selectedDate = date
             let formatter = DateFormatter()
             formatter.dateFormat = "MM-dd-yyyy"
-            var curDate =  formatter.string(from: selectedDate)
+            let curDate = formatter.string(from: selectedDate)
             
             guard let uid = Auth.auth().currentUser?.uid else {
               return
             }
             
             let daysCollectionRef = db.collection("users").document(uid).collection("days")
-
             // Query all documents in the "days" subcollection
             daysCollectionRef.getDocuments { (querySnapshot, error) in
                 if let error = error {
@@ -126,8 +127,8 @@ class DataDisplayViewController: UIViewController, UICollectionViewDelegate, UIC
                         // Document exists for the current day
                         print("Document exists for current day. ID: \(existingDocument.documentID)")
                         // Access the "timers" array if needed
-                        if var timers = existingDocument.data()?["timers"] as? [[String:Any]]{
-                            //read the timers
+                        if let timers = existingDocument.data()?["timers"] as? [[String:Any]]{
+                            // read the timers
                             self.completedTimers = timers
                             self.performSegue(withIdentifier: self.dayIdentifier, sender: nil)
                         } else {
@@ -136,7 +137,6 @@ class DataDisplayViewController: UIViewController, UICollectionViewDelegate, UIC
                     } else {
                         // Document doesn't exist for the current day, send an alert
                         let alertController = UIAlertController(title: "No Data", message: "You have no data for this day!", preferredStyle: .alert)
-                        // Create the action for the OK button
                         let okAction = UIAlertAction(title: "OK", style: .default)
                         alertController.addAction(okAction)
                         // Present the alert controller
@@ -147,6 +147,7 @@ class DataDisplayViewController: UIViewController, UICollectionViewDelegate, UIC
         }
     }
  
+    // doesnt allow for suto rotate
     override open var shouldAutorotate: Bool {
         return false
     }

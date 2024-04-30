@@ -42,6 +42,8 @@ class TimerDoneViewController: UIViewController {
         }
     }
     
+    // returns the number of task done along with storing the tasks, and its length
+    // to the users database
     func numTasksDone() -> Int {
         var count = 0
         guard let uid = Auth.auth().currentUser?.uid else {
