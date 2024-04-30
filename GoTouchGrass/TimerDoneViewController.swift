@@ -32,7 +32,7 @@ class TimerDoneViewController: UIViewController {
         
         currentTimeLabel.text = String(Float(timeDone / 60)) + " minutes"
         totalTimeLabel.text = totalTimeCalc(timeDone: timeDone)
-        var numTaskComp = numTasksDone()
+        let numTaskComp = numTasksDone()
         taskCompletionLabel.text = "\(numTaskComp) out of \(checkList.count) tasks completed!"
 
         if numTaskComp == checkList.count && checkList.count != 0 {

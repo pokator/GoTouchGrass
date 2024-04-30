@@ -62,12 +62,9 @@ class IndividualDayDataViewController: UIViewController {
         
         for timerMap in dateCompletedTimers {
             if let length = timerMap["length"] as? Int {
-                print(length)
                 if let tasks = timerMap["tasks"] as? [String] {
                     for task in tasks {
-                        print(length)
-                        var value = (Double(length)/Double(currTime)) * 100.0
-                        print(value)
+                        let value = (Double(length)/Double(currTime)) * 100.0
                         dataEntries.append(PieChartDataEntry(value: value, label: task))
                     }
                 }
