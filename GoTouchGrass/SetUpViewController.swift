@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseAuth
 import FirebaseDatabase
+import FirebaseFirestore
 
 let defaults = UserDefaults.standard
 
@@ -31,6 +32,8 @@ class SetUpViewController: UIViewController {
     
     var setRecActivityPref:Bool = false
     var setShoppingPref:Bool = false
+    
+    let db = Firestore.firestore()
     
     private lazy var databasePath: DatabaseReference? = {
       // 1
@@ -72,7 +75,7 @@ class SetUpViewController: UIViewController {
             let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
             changeRequest?.displayName = usernameField.text!
             changeRequest?.commitChanges { error in
-                // ...
+
             }
             if (changeRequest != nil) {
                 print("Username success")
@@ -114,6 +117,28 @@ class SetUpViewController: UIViewController {
                 } catch {
                   print("an error occurred", error)
                 }
+                
+                guard let uid = Auth.auth().currentUser?.uid else {
+                  return
+                }
+
+                // Define the data you want to store in the document
+                let data: [String: Any] = [
+                    "name": "John Doe",
+                    "age": 30,
+                    "city": "New York"
+                ]
+
+                db.collection("users").document(uid).setData(data) { error in
+                    if let error = error {
+                        print("Error adding user document: \(error)")
+                    } else {
+                        print("User document added with UID: \(uid)")
+                        // Create a subcollection called "days" within the user document
+                        let daysCollectionRef = self.db.collection("users").document(uid).collection("days")                  
+                    }
+                }
+                
                 performSegue(withIdentifier: "setupSuccessSegueIdentifier", sender: self)
             }
             Auth.auth().currentUser?.reload()
@@ -158,15 +183,4 @@ class SetUpViewController: UIViewController {
     @IBAction func onPref4ValChanged(_ sender: Any) {
         setPref4 = !setPref4
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }

@@ -88,7 +88,12 @@ class DataDisplayViewController: UIViewController, UICollectionViewDelegate, UIC
         var dateComponents = calendar.dateComponents([.year, .month], from: selectedDate)
         dateComponents.day = day
         if let date = calendar.date(from: dateComponents) {
+            // need to check if this date is in firebase
             selectedDate = date
+            let formatter = DateFormatter()
+            formatter.dateFormat = "MM-dd-yyyy"
+            var curDate =  formatter.string(from: selectedDate)
+            
             performSegue(withIdentifier: dayIdentifier, sender: nil)
         }
     }
