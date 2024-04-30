@@ -22,6 +22,7 @@ class DataDisplayViewController: UIViewController, UICollectionViewDelegate, UIC
     var totalSquares = [String]()
     
     let db = Firestore.firestore()
+    var completedTimers: [[String:Any]] = [[:]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -127,16 +128,19 @@ class DataDisplayViewController: UIViewController, UICollectionViewDelegate, UIC
                         // Access the "timers" array if needed
                         if var timers = existingDocument.data()?["timers"] as? [[String:Any]]{
                             //read the timers
-                            
-                            
-                           // perform segue here?
+                            self.completedTimers = timers
                             self.performSegue(withIdentifier: self.dayIdentifier, sender: nil)
                         } else {
                             print("Timers array not found or not of expected type")
                         }
                     } else {
-                        // Document doesn't exist for the current day
-                        
+                        // Document doesn't exist for the current day, send an alert
+                        let alertController = UIAlertController(title: "No Data", message: "You have no data for this day!", preferredStyle: .alert)
+                        // Create the action for the OK button
+                        let okAction = UIAlertAction(title: "OK", style: .default)
+                        alertController.addAction(okAction)
+                        // Present the alert controller
+                        self.present(alertController, animated: true, completion: nil)
                     }
                 }
             }
@@ -152,7 +156,7 @@ class DataDisplayViewController: UIViewController, UICollectionViewDelegate, UIC
         if segue.identifier == dayIdentifier,
            let individualDayVC = segue.destination as? IndividualDayDataViewController {
             individualDayVC.date = selectedDate
+            individualDayVC.dateCompletedTimers = completedTimers
         }
     }
 }
-

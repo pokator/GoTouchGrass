@@ -19,6 +19,7 @@ class IndividualDayDataViewController: UIViewController {
     
     @IBOutlet weak var pieChart: PieChartView!
     var date: Date!
+    var dateCompletedTimers: [[String:Any]]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
