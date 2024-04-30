@@ -32,7 +32,6 @@ class TimerDoneViewController: UIViewController {
         
         currentTimeLabel.text = String(Float(timeDone / 60)) + " minutes"
         totalTimeLabel.text = totalTimeCalc(timeDone: timeDone)
-        // Do any additional setup after loading the view.
         var numTaskComp = numTasksDone()
         taskCompletionLabel.text = "\(numTaskComp) out of \(checkList.count) tasks completed!"
 
@@ -52,9 +51,7 @@ class TimerDoneViewController: UIViewController {
         var timerMap: [String: Any] = [:]
         let timerlength:Int = timeDone
         var completedTask: [String] = []
-        // add the timer data as an integer mapped to the key "length"
-        // add the tasks completed to an array of strings mapped to the key "tasks"
-        
+
         for tasks in checkList {
             if tasks.isChecked {
                 completedTask.append(tasks.title)
@@ -64,13 +61,10 @@ class TimerDoneViewController: UIViewController {
         
         timerMap["length"] = timerlength
         timerMap["tasks"] = completedTask
-//        db.collection("users").document(uid).collection("days").getDocuments(completion: <#T##(QuerySnapshot?, Error?) -> Void#>)
-        
+
         let currentDate = Date()
         let dateFormatter = DateFormatter()
-        // Set the date format
         dateFormatter.dateFormat = "MM-dd-yyyy"
-        // Format the current date
         let formattedDate = dateFormatter.string(from: currentDate)
 
         // Reference to the "days" subcollection
@@ -90,7 +84,6 @@ class TimerDoneViewController: UIViewController {
                         break
                     }
                 }
-                
                 // Check if a document was found
                 if let existingDocument = foundDocument {
                     // Document exists for the current day
@@ -129,9 +122,6 @@ class TimerDoneViewController: UIViewController {
                 }
             }
         }
-        
-        //db.collection("users").document(uid).collection("days").addDocument(data: <#T##[String : Any]#>)
-        
         return count
     }
     
@@ -151,15 +141,6 @@ class TimerDoneViewController: UIViewController {
         return statsText
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
     // Inside the prepareForSegue method of your source view controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toMapTab" {

@@ -6,6 +6,10 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseDatabase
+import FirebaseFirestore
+import Foundation
 
 class DataDisplayViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -16,6 +20,8 @@ class DataDisplayViewController: UIViewController, UICollectionViewDelegate, UIC
 
     var selectedDate = Date()
     var totalSquares = [String]()
+    
+    let db = Firestore.firestore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -94,7 +100,46 @@ class DataDisplayViewController: UIViewController, UICollectionViewDelegate, UIC
             formatter.dateFormat = "MM-dd-yyyy"
             var curDate =  formatter.string(from: selectedDate)
             
-            performSegue(withIdentifier: dayIdentifier, sender: nil)
+            guard let uid = Auth.auth().currentUser?.uid else {
+              return
+            }
+            
+            let daysCollectionRef = db.collection("users").document(uid).collection("days")
+
+            // Query all documents in the "days" subcollection
+            daysCollectionRef.getDocuments { (querySnapshot, error) in
+                if let error = error {
+                    print("Error getting documents: \(error)")
+                } else {
+                    // Iterate through the documents
+                    var foundDocument: DocumentSnapshot?
+                    for document in querySnapshot!.documents {
+                        if let day = document.data()["day"] as? String, day == curDate {
+                            // Found a document where "day" corresponds to the current day
+                            foundDocument = document
+                            break
+                        }
+                    }
+                    // Check if a document was found
+                    if let existingDocument = foundDocument {
+                        // Document exists for the current day
+                        print("Document exists for current day. ID: \(existingDocument.documentID)")
+                        // Access the "timers" array if needed
+                        if var timers = existingDocument.data()?["timers"] as? [[String:Any]]{
+                            //read the timers
+                            
+                            
+                           // perform segue here?
+                            self.performSegue(withIdentifier: self.dayIdentifier, sender: nil)
+                        } else {
+                            print("Timers array not found or not of expected type")
+                        }
+                    } else {
+                        // Document doesn't exist for the current day
+                        
+                    }
+                }
+            }
         }
     }
  
