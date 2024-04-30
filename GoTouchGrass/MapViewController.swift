@@ -138,23 +138,6 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
     
     //Gets the user's preferences.
     func accessUser() {
-//        guard let databasePath = databasePath else {
-//            return
-//        }
-//        databasePath.observeSingleEvent(of: .value) { [self] (snapshot) in
-//            if snapshot.exists() {
-//                if let preferences = snapshot.value as? [String: Any] {
-//                    self.foodPreference = preferences["prefFood"] as? Bool ?? false
-//                    self.gymPreference = preferences["prefGym"] as? Bool ?? false
-//                    self.parksPreference = preferences["prefParks"] as? Bool ?? false
-//                    self.recreationPreference = preferences["prefRec"] as? Bool ?? false
-//                    self.shoppingPreference = preferences["prefShop"] as? Bool ?? false
-//                    self.setLocRad = preferences["locRadius"] as? Float ?? 0.0
-//                }
-//            } else {
-//                print("Preferences not found")
-//            }
-//        }
         foodPreference = defaults.bool(forKey: "prefFood")
         gymPreference = defaults.bool(forKey: "prefGym")
         parksPreference = defaults.bool(forKey: "prefParks")
@@ -173,12 +156,10 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
                 print("We have it")
                 //We have access to location, can filter further (by distance)
                 for location in rawLocationsList {
-                    // Assuming currentLocation is your current location's CLLocationCoordinate2D
                     let currentLocation = location.1
-                    // Create CLLocation objects for both coordinates
                     let currentCLLocation = CLLocation(latitude: currentLocation.latitude, longitude: currentLocation.longitude)
                     
-                    // Calculate the distance between the two CLLocation objects
+                    // Calculate the distance between the two locations
                     let distanceInMeters = currentCLLocation.distance(from: targetCLLocation)
                     
                     // Convert distance to miles
@@ -285,6 +266,16 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, MKMapViewD
         cell.detailTextLabel?.text = String(format: "%.1f", distanceInMiles) + " miles away"
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Get the selected location's coordinates from the locationsList
+        let selectedLocation = locationsList[indexPath.row]
+        let latitude = selectedLocation.1.latitude
+        let longitude = selectedLocation.1.longitude
+        
+        // Open Google Maps with the selected location's coordinates
+        openGoogleMaps(latitude: latitude, longitude: longitude)
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
