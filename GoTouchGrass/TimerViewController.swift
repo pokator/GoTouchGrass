@@ -14,19 +14,16 @@ import CoreData
 class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, UITableViewDelegate, UITableViewDataSource{
     
     private lazy var databasePath: DatabaseReference? = {
-      // 1
       guard let uid = Auth.auth().currentUser?.uid else {
         return nil
       }
 
-      // 2
       let ref = Database.database()
         .reference()
         .child("users/\(uid)/preferences")
       return ref
     }()
 
-    // 3
     private let encoder = JSONEncoder()
     private let decoder = JSONDecoder()
     
@@ -53,7 +50,6 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
         
         // setting up notifications for the timer!
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
-            // Handle the response if needed
         }
         
         startResetButton.setTitleColor(UIColor.green, for: .normal)
@@ -94,7 +90,6 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
     }
     
     @objc func applicationWillResignActive(notification: NSNotification) {
-        
         if timerCounting {
             let notificationCenter = UNUserNotificationCenter.current()
             let content = UNMutableNotificationContent()
@@ -126,7 +121,6 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
         }
         
     }
-    
     
     @IBAction func startButtonPressed(_ sender: Any) {
         if (timerCounting) {
@@ -227,11 +221,7 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
         tableView.reloadData()
         clearCoreData()
     }
-    
-    
-    
-    // MARK: - Timer schenanigans
-    
+        
     @objc func timerCounter () -> Void {
         if count == 0 {
             // shows notification and stops timer
@@ -254,7 +244,6 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
         }
     }
 
-    
     func secondstoMinutesSeconds (seconds: Int) -> (Int, Int) {
         return ((seconds % 3600) % 60, (seconds / 60))
     }
@@ -268,7 +257,6 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
     }
     
     // MARK: - UNUserNotificationCenterDelegate
-    
     func showNotification() {
         let notificationCenter = UNUserNotificationCenter.current()
         let content = UNMutableNotificationContent()
@@ -296,16 +284,13 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
     
     func storeTask(name:String) {
         let task = NSEntityDescription.insertNewObject(forEntityName: "Task", into: context)
-        
         task.setValue(name, forKey: "name")
-
         // commit the changes
         saveContext()
     }
     
     func retrieveTasks() -> [NSManagedObject] {
         // retrieve all objects that meet criteria
-        
         let request = NSFetchRequest<NSFetchRequestResult>(entityName:"Task")
         var fetchedResults:[NSManagedObject]? = nil
         
@@ -320,7 +305,6 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
     }
 
     func clearCoreData() {
-        
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Task")
         var fetchedResults:[NSManagedObject]
         
@@ -354,6 +338,4 @@ class TimerViewController: UIViewController, UNUserNotificationCenterDelegate, U
             }
         }
     }
-    
-    
 }

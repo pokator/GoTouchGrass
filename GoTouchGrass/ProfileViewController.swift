@@ -35,8 +35,6 @@ class ProfileViewController: UIViewController {
         accesUser()
     }
     
-    
-    
     @IBAction func logOutPressed(_ sender: Any) {
         // Confirm before loug out
         let controller = UIAlertController(
@@ -65,15 +63,4 @@ class ProfileViewController: UIViewController {
         var time = defaults.integer(forKey: "totalTime")
         totalTimeLabel.text = "\(time) seconds"
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }

@@ -15,7 +15,6 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         print("loading")
     }
 
@@ -31,7 +30,4 @@ class ViewController: UIViewController {
             performSegue(withIdentifier: loginSegue, sender: nil)
         }
     }
-
-
 }
-

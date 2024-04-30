@@ -102,15 +102,9 @@ class SetUpViewController: UIViewController {
                 
                 
                 do {
-                  // 4
                   let data = try encoder.encode(userPrefs)
 
-                  // 5
                   let json = try JSONSerialization.jsonObject(with: data)
-
-//                  // 6
-//                  databasePath.childByAutoId()
-//                    .setValue(json)
                     
                     databasePath.updateChildValues(json as! [AnyHashable : Any])
 
@@ -138,7 +132,6 @@ class SetUpViewController: UIViewController {
                         let daysCollectionRef = self.db.collection("users").document(uid).collection("days")                  
                     }
                 }
-                
                 performSegue(withIdentifier: "setupSuccessSegueIdentifier", sender: self)
             }
             Auth.auth().currentUser?.reload()

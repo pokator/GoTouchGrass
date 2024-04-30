@@ -24,7 +24,6 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         passwordField.isSecureTextEntry = true
         confirmPassField.isSecureTextEntry = true
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func onRegisterPressed(_ sender: Any) {
@@ -68,15 +67,4 @@ class RegisterViewController: UIViewController {
             self.present(controller,animated: true)
         }
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

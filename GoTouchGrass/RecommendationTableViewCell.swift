@@ -10,8 +10,6 @@ import UIKit
 class RecommendationTableViewCell: UITableViewCell {
     
     @IBOutlet weak var NameLabel: UILabel!
-
     @IBOutlet weak var LocationLabel: UILabel!
-    
     @IBOutlet weak var TypeLabel: UILabel!
 }
